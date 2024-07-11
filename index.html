@@ -1,172 +1,165 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Fingerstyle Guitar Lessons Library</title>
-  <style>
-   body {
-      font-family: Arial, sans-serif;
-      line-height: 1.6;
-      color: #333;
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 20px;
-    }
-    
-    h1 {
-      color: #2c3e50;
-      text-align: center;
-    }
-    
-    .lesson {
-      border: 1px solid #ddd;
-      padding: 15px;
-      margin-bottom: 20px;
-      border-radius: 5px;
-      display: flex;
-      align-items: stretch;
-      background-color: #f9f9f9; 
-      flex-direction: row-reverse; /* Default to mobile-friendly layout */
-    }
-    
-    .lesson-content {
-      flex: 1 1 300px;
-      margin: 0 20px;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-    }
-    
-    .lesson-info {
-      flex-grow: 1;
-      overflow: hidden;
-    }
-    
-    .lesson h2 {
-      color: #3498db;
-      margin-top: 0;
-      font-size: 1.5em;
-      line-height: 1.2;
-    }
-    
-    .lesson p {
-      margin-bottom: 10px;
-    }
-    
-    .lesson a {
-      color: #fff;
-      text-decoration: none;
-      display: block;
-      padding: 15px 30px;
-      background-color: #e74c3c;
-      border-radius: 5px;
-      text-align: center;
-      font-size: 1.2em;
-      font-weight: bold;
-      transition: background-color 0.3s ease;
-      width: 80%;
-      max-width: 300px;
-      margin: 10px auto;
-    }
-    
-    .lesson a:hover {
-      background-color: #c0392b;
-    }
-    
-    .video-container {
-      position: relative;
-      width: 100%;
-      padding-bottom: 56.25%; /* 16:9 aspect ratio */
-    }
-    
-    .video-container iframe {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
-
-    .genre {
-      font-style: italic;
-      color: #7f8c8d;
-    }
-
-    /* Media query for larger screens (adjust as needed) */
-    @media (min-width: 768px) {
-      .lesson:nth-child(even) {
-        flex-direction: row; /* Reverse the layout for even items on larger screens */
-      }
-    }
-  </style>
-</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fingerstyle Guitar Lessons Library</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        h1 {
+            color: #2c3e50;
+            text-align: center;
+        }
+        .lesson {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: stretch;
+            background-color: #f9f9f9;
+            height: 350px; /* Fixed height for uniformity */
+        }
+        .lesson-content {
+            flex: 1 1 300px;
+            margin: 0 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        .lesson-info {
+            flex-grow: 1;
+            overflow: hidden;
+        }
+        .lesson h2 {
+            color: #3498db;
+            margin-top: 0;
+            font-size: 1.5em;
+            line-height: 1.2;
+        }
+        .lesson p {
+            margin-bottom: 10px;
+        }
+        .lesson a {
+            color: #fff;
+            text-decoration: none;
+            display: block;
+            padding: 15px 30px;
+            background-color: #e74c3c;
+            border-radius: 5px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+            width: 80%;
+            max-width: 300px;
+            margin: 10px auto;
+        }
+        .lesson a:hover {
+            background-color: #c0392b;
+        }
+        .video-container {
+            flex: 0 0 560px;
+            height: 315px;
+            align-self: center;
+        }
+        .video-placeholder {
+            width: 100%;
+            height: 100%;
+            background-color: #ddd;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-style: italic;
+            color: #666;
+        }
+        .genre {
+            font-style: italic;
+            color: #7f8c8d;
+        }
+        .lesson:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+    </style>
+  </head>
 <body>
-  <h1>Fingerstyle Guitar Lessons Library</h1>
+    <h1>Fingerstyle Guitar Lessons Library</h1>
+    
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>She Will Be Loved (Maroon 5)</h2>
+                <p><span class="genre">Genre: Pop Rock, Soft Rock</span></p>
+                <p>Released by Maroon 5 in 2004. This song was the third single from their debut studio album, "Songs About Jane". Known for its catchy melody and heartfelt lyrics, it became one of the band's signature songs.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/44109078" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BgBRn4c7TUE?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
+    </div>
 
-  <div class="lesson">
-    <div class="lesson-content">
-      <div class="lesson-info">
-        <h2>She Will Be Loved (Maroon 5)</h2>
-        <p><span class="genre">Genre: Pop Rock, Soft Rock</span></p>
-        <p>Released by Maroon 5 in 2004. This song was the third single from their debut studio album, "Songs About Jane". Known for its catchy melody and heartfelt lyrics, it became one of the band's signature songs.</p>
-      </div>
-      <a href="https://www.patreon.com/posts/44109078" target="_blank">Access Full Lesson</a>
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>Memories (Maroon 5)</h2>
+                <p><span class="genre">Genre: Pop, Soft Rock</span></p>
+                <p>Released by Maroon 5 in 2019. This nostalgic pop song samples the melody from Pachelbel's Canon in D. It's a tribute to lost loved ones and has a more stripped-back sound compared to their usual style.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/memories-maroon-44478489" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/2UiXi_N8IwM?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/BgBRn4c7TUE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </div>
 
-  <div class="lesson">
-    <div class="lesson-content">
-      <div class="lesson-info">
-        <h2>Memories (Maroon 5)</h2>
-        <p><span class="genre">Genre: Pop, Soft Rock</span></p>
-        <p>Released by Maroon 5 in 2019. This nostalgic pop song samples the melody from Pachelbel's Canon in D. It's a tribute to lost loved ones and has a more stripped-back sound compared to their usual style.</p>
-      </div>
-      <a href="https://www.patreon.com/posts/memories-maroon-44478489" target="_blank">Access Full Lesson</a>
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>Don't Stop Me Now (Queen)</h2>
+                <p><span class="genre">Genre: Rock, Power Pop</span></p>
+                <p>Released by Queen in 1979. This upbeat rock song has become one of Queen's most popular tracks. Known for its energetic piano riffs and Freddie Mercury's dynamic vocal performance, it's a feel-good anthem that has stood the test of time.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/dont-stop-me-now-46523753" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EZKp-qfoSOY?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/2UiXi_N8IwM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </div>
 
-  <div class="lesson">
-    <div class="lesson-content">
-      <div class="lesson-info">
-        <h2>Don't Stop Me Now (Queen)</h2>
-        <p><span class="genre">Genre: Rock, Power Pop</span></p>
-        <p>Released by Queen in 1979. This upbeat rock song has become one of Queen's most popular tracks. Known for its energetic piano riffs and Freddie Mercury's dynamic vocal performance, it's a feel-good anthem that has stood the test of time.</p>
-      </div>
-      <a href="https://www.patreon.com/posts/dont-stop-me-now-46523753" target="_blank">Access Full Lesson</a>
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>Afterglow (Ed Sheeran)</h2>
+                <p><span class="genre">Genre: Pop, Folk Pop</span></p>
+                <p>Released by Ed Sheeran in 2020. This song was a surprise release after Sheeran's announced break from music. It features Sheeran's signature heartfelt lyrics and acoustic guitar-driven melody, showcasing his storytelling abilities.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/afterglow-ed-46771291" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/_UwDQ5oc9Qg?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/EZKp-qfoSOY?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>Driver's License (Olivia Rodrigo)</h2>
+                <p><span class="genre">Genre: Pop, Indie Pop</span></p>
+                <p>Released by Olivia Rodrigo in 2021. This debut single broke Spotify's record for most streams of a song in a single week. It's a power ballad that showcases Rodrigo's emotive vocals and relatable storytelling, resonating strongly with a young audience.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/drivers-license-47746579" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/BhCXkKfzxlY?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        </div>
     </div>
-  </div>
-
-  <div class="lesson">
-    <div class="lesson-content">
-      <div class="lesson-info">
-        <h2>Afterglow (Ed Sheeran)</h2>
-        <p><span class="genre">Genre: Pop, Folk Pop</span></p>
-        <p>Released by Ed Sheeran in 2020. This song was a surprise release after Sheeran's announced break from music. It features Sheeran's signature heartfelt lyrics and acoustic guitar-driven melody, showcasing his storytelling abilities.</p>
-      </div>
-      <a href="https://www.patreon.com/posts/afterglow-ed-46771291" target="_blank">Access Full Lesson</a>
-    </div>
-    <div class="video-container">
-      <iframe width="560" height="315" src="https://www.youtube.com/embed/_UwDQ5oc9Qg" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-    </div>
-  </div>
-
-  <div class="lesson">
-    <div class="lesson-content">
-      <div class="lesson-info">
-        <h2>Driver's License (Olivia Rodrigo)</h2>
-        <p><span class="genre">Genre: Pop, Indie Pop</span></p>
-        <p>Released by Olivia Rodrigo in 2021. This debut single broke Spotify's record for most streams of a song in a single week. It's a power ballad that showcases Rodrigo's emo
-
-
-  </body>
+</body>
 </html>
