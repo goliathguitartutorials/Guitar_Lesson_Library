@@ -66,12 +66,21 @@
         }
         .video-container {
             flex: 0 0 560px;
-            height: 315px;
-            align-self: center;
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+            height: 0;
+            overflow: hidden;
         }
+        .video-container iframe,
         .video-placeholder {
+            position: absolute;
+            top: 0;
+            left: 0;
             width: 100%;
             height: 100%;
+        }
+        .video-placeholder {
             background-color: #ddd;
             display: flex;
             justify-content: center;
@@ -87,33 +96,46 @@
             flex-direction: row-reverse;
         }
 
-@media (max-width: 768px) {
-    .lesson {
-        padding: 10px;
-    }
-    .lesson-content {
-        margin: 0;
-    }
-    .lesson h2 {
-        font-size: 18px;
-        word-wrap: break-word;
-    }
-    .lesson p {
-        font-size: 14px;
-        margin-bottom: 15px;
-    }
-    .lesson a {
-        width: 100%;
-        max-width: none;
-        margin: 10px 0;
-        padding: 12px 20px;
-        font-size: 16px;
-    }
-    .video-container {
-        height: auto;
-        aspect-ratio: 16 / 9;
-    }
-}
+        @media (max-width: 768px) {
+            body {
+                padding: 10px;
+            }
+            h1 {
+                font-size: 24px;
+            }
+            .lesson {
+                flex-direction: column;
+                padding: 10px;
+            }
+            .lesson:nth-child(even) {
+                flex-direction: column;
+            }
+            .video-container, .lesson-content {
+                width: 100%;
+                margin: 10px 0;
+            }
+            .lesson-content {
+                margin: 0;
+            }
+            .lesson h2 {
+                font-size: 18px;
+                word-wrap: break-word;
+            }
+            .lesson p {
+                font-size: 14px;
+                margin-bottom: 15px;
+            }
+            .lesson a {
+                width: 100%;
+                max-width: none;
+                margin: 10px 0;
+                padding: 12px 20px;
+                font-size: 16px;
+            }
+            .genre {
+                margin-bottom: 5px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -157,7 +179,7 @@
             <a href="https://www.patreon.com/posts/dont-stop-me-now-46523753" target="_blank">Access Full Lesson</a>
         </div>
         <div class="video-container">
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/EZKp-qfoSOY?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <iframe src="https://www.youtube.com/embed/EZKp-qfoSOY?si=sJTsaVpYe0HQgPDN" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </div>
     </div>
 
