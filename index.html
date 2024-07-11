@@ -87,42 +87,33 @@
             flex-direction: row-reverse;
         }
 
-        @media (max-width: 768px) {
-            body {
-                padding: 10px;
-            }
-            h1 {
-                font-size: 24px;
-            }
-            .lesson {
-                flex-direction: column;
-            }
-            .lesson:nth-child(even) {
-                flex-direction: column;
-            }
-            .video-container, .lesson-content {
-                width: 100%;
-                margin: 10px 0;
-            }
-            .video-container {
-                height: 200px;
-            }
-            .lesson h2 {
-                font-size: 20px;
-            }
-            .lesson p {
-                font-size: 14px;
-            }
-            .lesson a {
-                width: 100%;
-                margin: 10px 0;
-                font-size: 16px;
-                padding: 12px 20px;
-            }
-            .genre {
-                margin-bottom: 5px;
-            }
-        }
+@media (max-width: 768px) {
+    .lesson {
+        padding: 10px;
+    }
+    .lesson-content {
+        margin: 0;
+    }
+    .lesson h2 {
+        font-size: 18px;
+        word-wrap: break-word;
+    }
+    .lesson p {
+        font-size: 14px;
+        margin-bottom: 15px;
+    }
+    .lesson a {
+        width: 100%;
+        max-width: none;
+        margin: 10px 0;
+        padding: 12px 20px;
+        font-size: 16px;
+    }
+    .video-container {
+        height: auto;
+        aspect-ratio: 16 / 9;
+    }
+}
     </style>
 </head>
 <body>
