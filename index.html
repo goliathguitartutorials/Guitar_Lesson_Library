@@ -91,41 +91,36 @@
             body {
                 padding: 10px;
             }
+            h1 {
+                font-size: 24px;
+            }
             .lesson {
                 flex-direction: column;
-                height: auto;
             }
             .lesson:nth-child(even) {
                 flex-direction: column;
             }
-            .lesson-content {
-                margin: 0;
-                order: 2;
+            .video-container, .lesson-content {
+                width: 100%;
+                margin: 10px 0;
             }
             .video-container {
-                order: 1;
-                width: 100%;
-                height: 0;
-                padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
-                position: relative;
-                margin-bottom: 15px;
-            }
-            .video-container iframe,
-            .video-placeholder {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
+                height: 200px;
             }
             .lesson h2 {
-                font-size: 1.3em;
+                font-size: 20px;
+            }
+            .lesson p {
+                font-size: 14px;
             }
             .lesson a {
                 width: 100%;
-                max-width: none;
-                padding: 10px 15px;
-                font-size: 1em;
+                margin: 10px 0;
+                font-size: 16px;
+                padding: 12px 20px;
+            }
+            .genre {
+                margin-bottom: 5px;
             }
         }
     </style>
@@ -175,7 +170,32 @@
         </div>
     </div>
 
-    <!-- More lessons... -->
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>Afterglow (Ed Sheeran)</h2>
+                <p><span class="genre">Genre: Pop, Folk Pop</span></p>
+                <p>Released by Ed Sheeran in 2020. This song was a surprise release after Sheeran's announced break from music. It features Sheeran's signature heartfelt lyrics and acoustic guitar-driven melody, showcasing his storytelling abilities.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/afterglow-ed-46771291" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <div class="video-placeholder">[Video Embed Placeholder]</div>
+        </div>
+    </div>
 
+    <div class="lesson">
+        <div class="lesson-content">
+            <div class="lesson-info">
+                <h2>Driver's License (Olivia Rodrigo)</h2>
+                <p><span class="genre">Genre: Pop, Indie Pop</span></p>
+                <p>Released by Olivia Rodrigo in 2021. This debut single broke Spotify's record for most streams of a song in a single week. It's a power ballad that showcases Rodrigo's emotive vocals and relatable storytelling, resonating strongly with a young audience.</p>
+            </div>
+            <a href="https://www.patreon.com/posts/drivers-license-47746579" target="_blank">Access Full Lesson</a>
+        </div>
+        <div class="video-container">
+            <div class="video-placeholder">[Video Embed Placeholder]</div>
+        </div>
+    </div>
 </body>
 </html>
