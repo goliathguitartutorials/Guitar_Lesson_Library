@@ -1,0 +1,107 @@
+body {
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+}
+h1 {
+    color: #2c3e50;
+    text-align: center;
+}
+.lesson {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: start;
+    background-color: #f9f9f9;
+    height: 350px;
+}
+.lesson-content {
+    flex: 1 1 300px;
+    margin: 0 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.lesson-info {
+    flex-grow: 1;
+    overflow: hidden;
+}
+.lesson h2 {
+    color: #3498db;
+    margin-top: 0;
+    font-size: 1.5em;
+    line-height: 1.2;
+}
+.lesson p {
+    margin-bottom: 10px;
+}
+.lesson a {
+    color: #fff;
+    text-decoration: none;
+    display: block;
+    padding: 15px 30px;
+    background-color: #e74c3c;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1.2em;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+    width: 80%;
+    max-width: 300px;
+    margin: 10px auto;
+}
+.lesson a:hover {
+    background-color: #c0392b;
+}
+.video-container {
+    flex: 0 0 560px;
+    height: 315px;
+    align-self: center;
+    position: relative; /* For positioning the play button */
+    cursor: pointer; /* Indicates the container is clickable */
+}
+.video-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.video-container .play-button {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80px;
+  height: 80px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.video-container .play-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.video-container .play-button::before {
+  content: "";
+  display: block;
+  border-style: solid;
+  border-width: 15px 0 15px 25px;
+  border-color: transparent transparent transparent white;
+}
+.genre {
+    font-style: italic;
+    color: #7f8c8d;
+}
+.lesson:nth-child(even) {
+    flex-direction: row-reverse;
+}
