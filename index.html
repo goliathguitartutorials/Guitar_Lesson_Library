@@ -25,7 +25,7 @@
     <div id="lessons-container">
         <!-- Lessons will be loaded here by JavaScript -->
     </div>
-    <script>
+   <script>
         const lessons = [
             {
             title: "She Will Be Loved (Maroon 5)",
@@ -441,7 +441,7 @@
                     </div>
                     <a href="${lesson.patreonLink}" target="_blank">Access Full Lesson</a>
                 </div>
-                <div class="video-container video-placeholder" data-video-id="${lesson.videoId}">
+                <div class="video-container" data-video-id="${lesson.videoId}">
                     <img src="https://img.youtube.com/vi/${lesson.videoId}/hqdefault.jpg" alt="Video Thumbnail">
                     <div class="play-button"></div>
                  </div>
@@ -450,21 +450,22 @@
 
 
           const videoContainer = lessonDiv.querySelector('.video-container');
-        videoContainer.addEventListener('click', function() {
-            if (this.classList.contains('video-placeholder')) {
-                const videoId = this.getAttribute('data-video-id');
-                const iframe = document.createElement('iframe');
-                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-                iframe.title = 'YouTube video player';
-                iframe.frameBorder = '0';
-                iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-                iframe.setAttribute('allowfullscreen', '');
-                this.classList.remove('video-placeholder');
-                this.classList.add('video-playing');
-                 this.appendChild(iframe);
+           videoContainer.addEventListener('click', function() {
+               const videoId = this.getAttribute('data-video-id');
+               const iframe = document.createElement('iframe');
+               iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+               iframe.title = 'YouTube video player';
+               iframe.frameBorder = '0';
+               iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+               iframe.setAttribute('allowfullscreen', '');
 
-            }
-        });
+               const videoOverlay = document.createElement('div');
+                 videoOverlay.classList.add('video-overlay');
+                 videoOverlay.appendChild(iframe);
+                 this.parentNode.appendChild(videoOverlay);
+                 this.style.display = 'none';
+
+          });
         });
         }
     function filterLessons() {
