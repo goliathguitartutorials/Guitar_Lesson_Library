@@ -19,7 +19,6 @@ h1 {
     flex-wrap: wrap;
     align-items: start;
     background-color: #f9f9f9;
-    height: 350px;
 }
 .lesson-content {
     flex: 1 1 300px;
@@ -60,43 +59,44 @@ h1 {
     background-color: #c0392b;
 }
 .video-container {
-    flex: 0 0 560px;
-    height: 315px;
+    flex: 1 1 300px;
     align-self: center;
-    position: relative; /* For positioning the play button */
-    cursor: pointer; /* Indicates the container is clickable */
+    position: relative;
+    cursor: pointer;
+    max-width: 560px; /* Added max width */
+    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
 }
 .video-container img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 .video-container .play-button {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80px;
-  height: 80px;
-  background: rgba(0, 0, 0, 0.5);
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.3s ease;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80px;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.3s ease;
 }
 
 .video-container .play-button:hover {
-  background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.8);
 }
 
 .video-container .play-button::before {
-  content: "";
-  display: block;
-  border-style: solid;
-  border-width: 15px 0 15px 25px;
-  border-color: transparent transparent transparent white;
+    content: "";
+    display: block;
+    border-style: solid;
+    border-width: 15px 0 15px 25px;
+    border-color: transparent transparent transparent white;
 }
 .genre {
     font-style: italic;
@@ -104,4 +104,22 @@ h1 {
 }
 .lesson:nth-child(even) {
     flex-direction: row-reverse;
+}
+/* Media Query for smaller screens */
+@media (max-width: 768px) {
+    .lesson {
+        flex-direction: column; /* Stack content and video vertically */
+         height: auto;
+    }
+
+    .lesson:nth-child(even) {
+    flex-direction: column; /* Ensure it stacks correctly for all lessons on mobile*/
+    }
+    .lesson-content {
+        margin: 0 0 20px 0;  /*add some space below the text in a mobile display */
+    }
+     .video-container {
+       flex: 1 1 auto;
+         max-width: 100%;
+      }
 }
