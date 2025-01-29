@@ -8,19 +8,19 @@
 </head>
 <body>
     <h1>Fingerstyle Guitar Lessons Library</h1>
-     <div class="filter-container">
-        <button class="filter-button" data-sort="recent">Most Recent</button>
-        <button class="filter-button" data-sort="popular">Most Popular</button>
-        <button class="filter-button" data-sort="a-z">A to Z</button>
-        <button class="filter-button" data-sort="z-a">Z to A</button>
+    <div class="filter-container">
+        <button class="filter-button sort-button" data-sort="recent">Most Recent</button>
+        <button class="filter-button sort-button" data-sort="popular">Most Popular</button>
+        <button class="filter-button sort-button" data-sort="a-z">A to Z</button>
+        <button class="filter-button sort-button" data-sort="z-a">Z to A</button>
     </div>
     <div class="filter-container">
-        <button class="filter-button" data-filter="60s">60s</button>
-        <button class="filter-button" data-filter="70s">70s</button>
-        <button class="filter-button" data-filter="80s">80s</button>
-        <button class="filter-button" data-filter="90s">90s</button>
-        <button class="filter-button" data-filter="After 2000">After 2000</button>
-           <button class="filter-button" data-filter="All">All</button>
+        <button class="filter-button decade-button" data-filter="60s">60s</button>
+        <button class="filter-button decade-button" data-filter="70s">70s</button>
+        <button class="filter-button decade-button" data-filter="80s">80s</button>
+        <button class="filter-button decade-button" data-filter="90s">90s</button>
+        <button class="filter-button decade-button" data-filter="After 2000">After 2000</button>
+        <button class="filter-button decade-button" data-filter="All">All</button>
     </div>
     <div id="lessons-container">
         <!-- Lessons will be loaded here by JavaScript -->
@@ -391,6 +391,8 @@
 
         const lessonsContainer = document.getElementById('lessons-container');
         const filterButtons = document.querySelectorAll('.filter-button');
+          let selectedSort = null;
+           let selectedDecade = null;
 
         function renderLessons(lessonsArray) {
             lessonsContainer.innerHTML = '';
@@ -431,14 +433,12 @@
           });
         });
         }
-    function filterLessons(filterType) {
-         let filteredLessons = [...lessons]; // Create a copy to avoid modifying original data
-          if (filterType === "All") {
-               renderLessons(filteredLessons);
-               return;
-           }
+    function filterLessons() {
+        let filteredLessons = [...lessons]; // Create a copy to avoid modifying original data
 
-        switch (filterType) {
+            // Apply sort if selected
+        if (selectedSort) {
+          switch (selectedSort) {
             case 'recent':
                 filteredLessons.sort((a, b) => new Date(b.publishedDate) - new Date(a.publishedDate));
                 break;
@@ -451,20 +451,35 @@
             case 'z-a':
                 filteredLessons.sort((a, b) => b.title.localeCompare(a.title));
                 break;
-               default:
-                   filteredLessons = filteredLessons.filter(lesson => lesson.decade === filterType)
+             default:
                  break;
         }
+      }
+
+        // Apply decade filter if selected
+        if (selectedDecade && selectedDecade !== "All") {
+            filteredLessons = filteredLessons.filter(lesson => lesson.decade === selectedDecade)
+        }
+
+
        renderLessons(filteredLessons);
     }
+     filterButtons.forEach(button => {
+      button.addEventListener('click', function() {
+             if (this.classList.contains('sort-button')) {
+            // Remove active class from any other buttons
+                document.querySelectorAll('.sort-button.active').forEach(btn => btn.classList.remove('active'));
+                    selectedSort = this.getAttribute('data-sort');
+                     this.classList.add('active');
+                  } else if (this.classList.contains('decade-button')) {
+                    document.querySelectorAll('.decade-button.active').forEach(btn => btn.classList.remove('active'));
+                      selectedDecade = this.getAttribute('data-filter');
+                      this.classList.add('active');
+                    }
 
-        filterButtons.forEach(button => {
-           button.addEventListener('click', function() {
-                const filterType = this.getAttribute('data-filter') || this.getAttribute('data-sort');
-                filterLessons(filterType);
+                filterLessons();
             });
         });
-
 
     // Initial render (optional if you want a default order)
     renderLessons(lessons);
