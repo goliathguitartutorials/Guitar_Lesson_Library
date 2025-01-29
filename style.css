@@ -59,7 +59,6 @@ h1 {
     background-color: #c0392b;
 }
 .video-container {
-    flex: 1 1 300px;
     align-self: center;
     position: relative;
     cursor: pointer;
@@ -122,4 +121,10 @@ h1 {
        flex: 1 1 auto;
          max-width: 100%;
       }
+}
+/* Media Query for larger screens */
+@media (min-width: 769px) {
+    .video-container {
+        flex: none;
+    }
 }
