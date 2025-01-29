@@ -441,7 +441,7 @@
                     </div>
                     <a href="${lesson.patreonLink}" target="_blank">Access Full Lesson</a>
                 </div>
-                <div class="video-container" data-video-id="${lesson.videoId}">
+                <div class="video-container video-placeholder" data-video-id="${lesson.videoId}">
                     <img src="https://img.youtube.com/vi/${lesson.videoId}/hqdefault.jpg" alt="Video Thumbnail">
                     <div class="play-button"></div>
                  </div>
@@ -450,22 +450,20 @@
 
 
           const videoContainer = lessonDiv.querySelector('.video-container');
-          videoContainer.addEventListener('click', function() {
-              const videoId = this.getAttribute('data-video-id');
-              const iframe = document.createElement('iframe');
+        videoContainer.addEventListener('click', function() {
+            if (this.classList.contains('video-placeholder')) {
+                const videoId = this.getAttribute('data-video-id');
+                const iframe = document.createElement('iframe');
                 iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
                 iframe.title = 'YouTube video player';
                 iframe.frameBorder = '0';
                 iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
                 iframe.setAttribute('allowfullscreen', '');
+                this.classList.remove('video-placeholder');
+                this.classList.add('video-playing');
+                 this.appendChild(iframe);
 
-               // Append the iframe to video container
-            this.appendChild(iframe);
-               // Hide the video image on playback
-            this.querySelector('img').style.display = 'none';
-            // Hide the play button on playback
-            this.querySelector('.play-button').style.display = 'none';
-
+            }
         });
         });
         }
