@@ -10,6 +10,24 @@ h1 {
     color: #2c3e50;
     text-align: center;
 }
+.filter-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+.filter-button {
+    padding: 10px 15px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+.filter-button:hover {
+    background-color: #2980b9;
+}
 .lesson {
     border: 1px solid #ddd;
     padding: 15px;
@@ -130,7 +148,6 @@ h1 {
         max-width: 560px;
         flex: 0 0 auto; /* Prevent the video container from shrinking */
     }
-
     .lesson:nth-child(even) .lesson-content { /*reverse order on desktop*/
         margin: 0 0 0 20px;
     }
