@@ -28,6 +28,10 @@ h1 {
 .filter-button:hover {
     background-color: #2980b9;
 }
+.filter-button.active{
+   background-color: #2980b9;
+   opacity: 0.75;
+}
 .lesson {
     border: 1px solid #ddd;
     padding: 15px;
