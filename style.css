@@ -102,7 +102,7 @@ h1 {
 }
 
 .video-container {
-    position: relative;
+    position: relative; /* Ensure container is positioned */
     cursor: pointer;
     max-width: 100%;
     aspect-ratio: 16 / 9;
@@ -114,6 +114,9 @@ h1 {
     height: 100%;
     object-fit: cover;
     display: block;
+    position: absolute;  /* Position image absolutely */
+    top: 0;
+    left: 0;
 }
 .video-container iframe {
         position: absolute;
