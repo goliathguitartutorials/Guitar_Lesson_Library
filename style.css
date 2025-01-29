@@ -17,7 +17,7 @@ h1 {
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
-    align-items: start;
+    align-items: flex-start;
     background-color: #f9f9f9;
 }
 .lesson-content {
@@ -59,12 +59,11 @@ h1 {
     background-color: #c0392b;
 }
 .video-container {
-    flex: 1 1 300px;
-    align-self: center;
     position: relative;
     cursor: pointer;
-    max-width: 560px; /* Added max width */
-    aspect-ratio: 16 / 9; /* Maintain 16:9 aspect ratio */
+    max-width: 100%; /* max-width 100% */
+    aspect-ratio: 16 / 9;
+    align-self: center;
 }
 .video-container img {
     width: 100%;
@@ -108,36 +107,32 @@ h1 {
 /* Media Query for smaller screens */
 @media (max-width: 768px) {
     .lesson {
-        flex-direction: column; /* Stack content and video vertically */
+        flex-direction: column;
         height: auto;
     }
-
-    .lesson:nth-child(even) {
-        flex-direction: column; /* Ensure it stacks correctly for all lessons on mobile*/
+     .lesson:nth-child(even) {
+      flex-direction: column;
     }
-
     .lesson-content {
         margin: 0 0 20px 0;  /*add some space below the text in a mobile display */
     }
-
-    .video-container {
-        flex: 1 1 auto;
-        max-width: 100%;
-    }
 }
-
-
-/* Explicitly define desktop layout within the same media query */
+/* Desktop View */
 @media (min-width: 769px) {
-  .video-container {
-    flex: 0 0 auto; /* Do not grow or shrink */
-    width: 560px; /* Explicitly set the width */
-  }
-   .video-container iframe { /* NEW CSS */
-        position: absolute; /* NEW CSS */
-        top: 0;        /* NEW CSS */
-        left: 0;       /* NEW CSS */
-        width: 100%;    /* NEW CSS */
-        height: 100%;   /* NEW CSS */
+    .lesson {
+        flex-wrap: nowrap;
+        align-items: center;
     }
+    .lesson-content {
+        margin: 0 20px 0 0;
+    }
+    .video-container {
+        max-width: 560px;
+        flex: 0 0 auto; /* Prevent the video container from shrinking */
+    }
+
+    .lesson:nth-child(even) .lesson-content { /*reverse order on desktop*/
+        margin: 0 0 0 20px;
+    }
+
 }
