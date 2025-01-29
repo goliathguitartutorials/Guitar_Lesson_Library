@@ -9,6 +9,10 @@ body {
 h1 {
     color: #2c3e50;
     text-align: center;
+    border-bottom: 2px solid #e74c3c; /*Added a border*/
+    padding-bottom: 10px; /*Added space below*/
+     display: inline-block; /*added display inline block*/
+     margin-bottom: 20px; /* Added spacing below*/
 }
 .filter-container {
     display: flex;
@@ -32,9 +36,8 @@ h1 {
     background-color: #2980b9;
 }
 .filter-button.active{
-   background-color: #2980b9;
-   opacity: 1;
-  color: #333;
+   background-color: #e74c3c; /* Changed to our main orange color */
+   color: #fff; /* Changed to white text on orange */
    font-weight: bold;
 }
 .lesson {
