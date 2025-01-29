@@ -133,4 +133,11 @@ h1 {
     flex: 0 0 auto; /* Do not grow or shrink */
     width: 560px; /* Explicitly set the width */
   }
+   .video-container iframe { /* NEW CSS */
+        position: absolute; /* NEW CSS */
+        top: 0;        /* NEW CSS */
+        left: 0;       /* NEW CSS */
+        width: 100%;    /* NEW CSS */
+        height: 100%;   /* NEW CSS */
+    }
 }
