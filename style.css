@@ -79,7 +79,7 @@ h1 {
 .video-container {
     position: relative;
     cursor: pointer;
-    max-width: 100%; /* max-width 100% */
+    max-width: 100%;
     aspect-ratio: 16 / 9;
     align-self: center;
 }
@@ -132,7 +132,7 @@ h1 {
       flex-direction: column;
     }
     .lesson-content {
-        margin: 0 0 20px 0;  /*add some space below the text in a mobile display */
+        margin: 0 0 20px 0;
     }
 }
 /* Desktop View */
@@ -146,10 +146,9 @@ h1 {
     }
     .video-container {
         max-width: 560px;
-        flex: 0 0 auto; /* Prevent the video container from shrinking */
+        flex: 0 0 auto;
     }
-    .lesson:nth-child(even) .lesson-content { /*reverse order on desktop*/
+    .lesson:nth-child(even) .lesson-content {
         margin: 0 0 0 20px;
     }
-
 }
