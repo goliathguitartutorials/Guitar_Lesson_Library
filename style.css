@@ -59,6 +59,7 @@ h1 {
     background-color: #c0392b;
 }
 .video-container {
+    flex: 1 1 300px;
     align-self: center;
     position: relative;
     cursor: pointer;
@@ -108,23 +109,28 @@ h1 {
 @media (max-width: 768px) {
     .lesson {
         flex-direction: column; /* Stack content and video vertically */
-         height: auto;
+        height: auto;
     }
 
     .lesson:nth-child(even) {
-    flex-direction: column; /* Ensure it stacks correctly for all lessons on mobile*/
+        flex-direction: column; /* Ensure it stacks correctly for all lessons on mobile*/
     }
+
     .lesson-content {
         margin: 0 0 20px 0;  /*add some space below the text in a mobile display */
     }
-     .video-container {
-       flex: 1 1 auto;
-         max-width: 100%;
-      }
-}
-/* Media Query for larger screens */
-@media (min-width: 769px) {
+
     .video-container {
-        flex: none;
+        flex: 1 1 auto;
+        max-width: 100%;
     }
+}
+
+
+/* Explicitly define desktop layout within the same media query */
+@media (min-width: 769px) {
+  .video-container {
+    flex: 0 0 auto; /* Do not grow or shrink */
+    width: 560px; /* Explicitly set the width */
+  }
 }
