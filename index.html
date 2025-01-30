@@ -50,6 +50,7 @@
         <!-- Lessons will be loaded here by JavaScript -->
     </div>
 <script>
+<script>
         const lessons = [
     {
         title: "She Will Be Loved (Maroon 5)",
@@ -541,12 +542,13 @@
                       const lessonElement = entry.target;
                       if (entry.isIntersecting) {
                           lessonElement.classList.add('slide-in');
-                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
                          } else {
                             // Check scroll direction to animate out on scroll up
                             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                             if (scrollTop < lastScrollTop) { // Scrolling Up
-                                lessonElement.classList.remove('slide-in'); // Animate out
+                                // Instantly disappear by resetting styles
+                                lessonElement.style.opacity = '0';
+                                lessonElement.style.transform = 'translateY(50px)';
                             }
                             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
                          }
