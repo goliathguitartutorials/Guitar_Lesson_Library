@@ -50,10 +50,10 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     padding: 15px;
-    position: sticky; /* Make filter card sticky */
-    top: 0; /* Stick to top of viewport */
-    z-index: 100; /* Ensure it's above other content */
-    background-color: #ffffff; /* Ensure sticky background */
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background-color: #ffffff;
 }
 
 /* Filter section styles */
@@ -290,7 +290,20 @@ body {
 
 /* Media Queries */
 @media (max-width: 768px) {
-    .site-header {
+  .desktop-filter {
+      display: none; /* Hide desktop filters on mobile */
+    }
+
+   .mobile-filter {
+      display: block; /* Show mobile filters on mobile */
+       position: sticky;
+        top: 0;
+        z-index: 100;
+        background-color: #ffffff;
+          margin-bottom: 10px;
+    }
+
+      .site-header {
         padding: 1rem 0.5rem;
         border-radius: 10px;
         flex-direction: column;
@@ -301,8 +314,9 @@ body {
         margin-bottom: 0.5rem;
     }
 
-     .filter-card {
+      .filter-card {
       padding: 10px; /* Adjusted padding for mobile */
+       margin-bottom: 0px; /* reduced margin */
     }
 
 
@@ -355,6 +369,9 @@ body {
 
 /* Desktop View */
 @media (min-width: 769px) {
+   .mobile-filter{
+      display: none; /* Hide mobile filters on desktop */
+    }
     .lesson {
         flex-wrap: nowrap;
         align-items: center;
