@@ -304,10 +304,10 @@ body {
     }
 
     .site-header {
-         padding: 1rem 0.5rem;
-         border-radius: 10px;
-          flex-direction: column;
-          align-items: center;
+        padding: 1rem 0.5rem;
+        border-radius: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .banner-container {
@@ -316,55 +316,54 @@ body {
 
     .filter-card {
         padding: 10px;
-         margin-bottom: 0px;
+        margin-bottom: 0px;
     }
 
     .filter-section {
-        flex-direction: row; /* Display filter groups in a row */
-        align-items: flex-start; /* Align to the start */
-        justify-content: space-around; /* Distribute space evenly */
+        flex-direction: column;
+        align-items: flex-start; /* Align to start on mobile */
         gap: 10px;
-         flex-wrap: wrap;
+        margin-bottom: 10px; /* added margin */
+
     }
 
     .filter-group {
-         min-width: auto; /* allow the filter groups to take up the full width */
-        margin-bottom: 0;
-           flex: 1; /* Allow the filter groups to grow and shrink */
-        max-width: 200px;
-
-    }
-
-        .mobile-filter .filter-group{
-          align-items: flex-start; /* Align groups to the start on mobile */
+        min-width: auto; /* allow the filter groups to take up the full width */
+        margin-bottom: 5px;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
 
     }
 
 
 
     .filter-label {
-         font-size: 0.8rem;
+        font-size: 0.8rem;
         margin-bottom: 3px;
         padding-bottom: 3px;
         text-align: left;
+
     }
 
-     .filter-container {
+    .filter-container {
           padding: 5px;
-          gap: 5px;
-           flex-wrap: wrap; /* Allow Wrapping on mobile*/
+           gap: 5px;
+          flex-wrap: wrap;
         overflow-x: hidden;
-          display: flex;
-          max-width: 100%;
+        max-width: 100%;
         width: auto;
-        margin: 0 auto;
     }
 
 
+    .mobile-filter .filter-container{
+           justify-content: flex-start;
+    }
 
-      .mobile-filter .filter-container{
-          justify-content: flex-start; /*Align buttons to the start on mobile */
-
+    .mobile-filter .filter-container.primary-filters,
+     .mobile-filter .filter-container.decade-filters{
+        margin-bottom: 10px;
     }
 
 
@@ -372,6 +371,7 @@ body {
         padding: 6px 12px;
         font-size: 0.7rem;
     }
+
 
     .lesson {
         flex-direction: column;
@@ -393,8 +393,8 @@ body {
 
 /* Desktop View */
 @media (min-width: 769px) {
-   .mobile-filter{
-      display: none; /* Hide mobile filters on desktop */
+    .mobile-filter{
+        display: none;
     }
     .lesson {
         flex-wrap: nowrap;
