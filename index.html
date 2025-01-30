@@ -23,7 +23,7 @@
 
     <!-- Filter Card (Full Section) -->
     <div class="filter-card desktop-filter sticky" id="filter-card">
-        <div class="filter-section expanded" id="filter-section"> <!-- Initially expanded for mobile -->
+        <div class="filter-section collapsed" id="filter-section"> <!-- Initially collapsed for mobile -->
             <div class="filter-group">
                 <h3 class="filter-label">Sorting</h3>
                 <div class="filter-container primary-filters">
@@ -501,8 +501,7 @@
         let selectedSort = null;
         let selectedDecade = null;
         let selectedDifficulty = null; // New variable for difficulty
-        let isFilterSectionExpanded = true; // Track filter section state
-
+        let isFilterSectionExpanded = false; // Track filter section state - start as collapsed
 
         function renderLessons(lessonsArray) {
             lessonsContainer.innerHTML = '';
@@ -625,13 +624,17 @@
     });
 
     filterExpandButton.addEventListener('click', () => {
+        console.log('Filter button clicked!'); // DEBUG: Check if button click is registered
         isFilterSectionExpanded = !isFilterSectionExpanded;
+        console.log('isFilterSectionExpanded:', isFilterSectionExpanded); // DEBUG: Check variable toggle
         if (isFilterSectionExpanded) {
             filterSection.classList.remove('collapsed');
             filterSection.classList.add('expanded');
+             console.log('Filter section expanded'); // DEBUG: Check if expanded class is added
         } else {
             filterSection.classList.remove('expanded');
             filterSection.classList.add('collapsed');
+             console.log('Filter section collapsed'); // DEBUG: Check if collapsed class is added
         }
     });
 
