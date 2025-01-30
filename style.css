@@ -182,6 +182,14 @@ body {
     transform: translateY(-5px);
 }
 
+/* New slide-out animation styles */
+.lesson.slide-out {
+    opacity: 0;
+    transform: translateY(50px); /* Match initial state for slide-in */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Match initial box-shadow */
+}
+
+
 .lesson-content {
     flex: 1 1 300px;
     margin: 0 20px;
