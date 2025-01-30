@@ -64,7 +64,7 @@ body {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
-    padding: 0;
+    padding: 15px; /* Initial padding when expanded */
     border-radius: 5px;
     box-shadow: none;
     background-color: transparent;
@@ -74,16 +74,17 @@ body {
     gap: 10px;
     transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* For smooth collapse */
     overflow: hidden; /* Ensure content is hidden when collapsed */
+    max-height: 500px; /* Initial max-height when expanded - adjust if needed */
 }
 
 .filter-section.collapsed {
     max-height: 0;
-    padding: 0 15px; /* Keep horizontal padding */
+    padding: 0 15px; /* Keep horizontal padding, remove vertical padding */
 }
 
 .filter-section.expanded {
     max-height: 500px; /* Adjust as needed, or use a large value to accommodate content */
-    padding: 15px;
+    padding: 15px; /* Padding when expanded */
 }
 
 
@@ -382,13 +383,14 @@ body {
         flex-direction: column;
         gap: 20px;
         max-height: 500px; /* Initial full height */
-        padding: 15px;
+        padding: 0 15px; /* Initial horizontal padding */
     }
 
     .filter-section.collapsed {
         max-height: 0;
         padding: 0 15px; /* Keep horizontal padding when collapsed */
     }
+
 
     .filter-group {
         width: 100%;
