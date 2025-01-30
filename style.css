@@ -50,9 +50,6 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     padding: 15px;
-    position: sticky;
-    top: 0;
-    z-index: 100;
     background-color: #ffffff;
 }
 
@@ -403,5 +400,10 @@ body {
 
     .lesson:nth-child(even) .lesson-content {
         margin: 0 0 0 20px;
+    }
+    .filter-card { /* Added sticky properties here for desktop */
+        position: sticky;
+        top: 0;
+        z-index: 100;
     }
 }
