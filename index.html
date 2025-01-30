@@ -432,6 +432,13 @@
 
         function renderLessons(lessonsArray) {
             lessonsContainer.innerHTML = '';
+             const observer = new IntersectionObserver(entries => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in');
+                   }
+            });
+        }, {threshold: 0.2});
             lessonsArray.forEach((lesson, index) => {
             const lessonDiv = document.createElement('div');
             lessonDiv.classList.add('lesson');
@@ -482,7 +489,9 @@
 
 
           });
+             observer.observe(lessonDiv);
         });
+
         }
     function filterLessons() {
         let filteredLessons = [...lessons]; // Create a copy to avoid modifying original data
