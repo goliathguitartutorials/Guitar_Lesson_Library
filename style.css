@@ -62,36 +62,40 @@ body {
     box-shadow: none;
     background-color: transparent;
     display: flex;
-    flex-wrap: wrap; /* Allow filter groups to wrap */
-    justify-content: space-around; /* Distribute groups evenly */
-    gap: 10px; /* Reduced gap */
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 10px;
 }
 
 .filter-group {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Align labels to center */
+    align-items: center;
     text-align: center;
-     margin-bottom: 5px; /* Reduced spacing */
-     flex: 1; /* Allow each group to take equal space */
-     min-width: 150px; /* set a minimum width */
+    margin-bottom: 5px;
+    flex: 1;
+    min-width: 150px;
 }
 
-.filter-label{
-    margin-bottom: 5px; /* Reduced spacing */
+.filter-label {
+    margin-bottom: 5px;
     font-weight: bold;
     text-transform: uppercase;
     color: #555;
     letter-spacing: 1px;
-    font-size: 0.9rem; /* Slightly smaller font */
+    font-size: 0.85rem;
+    border-bottom: 2px solid #ddd; /* Added border */
+    padding-bottom: 5px; /* Added padding for space below border */
+    display: inline-block; /* Ensure the border only spans the text width */
 }
+
 
 .filter-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 8px; /* Reduced gap */
-    padding: 8px; /* Reduced padding */
+    gap: 8px;
+    padding: 8px;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.2);
     max-width: max-content;
@@ -108,7 +112,7 @@ body {
 }
 
 .filter-button {
-    padding: 8px 16px; /* Reduced padding */
+    padding: 8px 16px;
     background: linear-gradient(145deg, #3498db, #2980b9);
     color: white;
     border: none;
@@ -118,7 +122,7 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.8rem; /* Slightly smaller font */
+    font-size: 0.8rem;
     box-shadow: none;
 }
 
