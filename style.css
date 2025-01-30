@@ -11,10 +11,17 @@ body {
 /* Header styles */
 .site-header {
     background: linear-gradient(to right, #1a1a1a, #2c3e50);
-    padding: 1rem; /* Reduced padding for header */
+    padding: 1rem;
     margin-bottom: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: 1px solid #ddd;
+    max-width: 1000px; /* Match body's max-width */
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding/border is included in the width */
 }
 
 /* Banner styles */
@@ -23,18 +30,29 @@ body {
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
+    max-width: 1000px; /* Match body's max-width */
+     box-sizing: border-box; /* Ensure padding/border is included in the width */
+     width: 100%;
+
 }
 
 .banner-image {
-  max-width: 100%;
-  height: auto;
-  display: block;
+    max-width: 100%;
+    height: auto;
+    display: block;
 }
 
 /* Filter section styles */
 .filter-section {
-    max-width: 900px;
-    margin: 0 auto;
+     max-width: 1000px; /* Match body's max-width */
+     width: 100%;
+     margin: 0 auto;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: transparent;
+    box-sizing: border-box; /* Ensure padding/border is included in the width */
 }
 
 .filter-container {
@@ -43,9 +61,11 @@ body {
     flex-wrap: wrap;
     gap: 12px;
     padding: 15px;
-    margin-bottom: 10px;
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.05);
+    border-radius: 5px;
+    background: rgba(255, 255, 255, 0.2);
+     max-width: 100%;
+    width: 100%;
+     margin-left: -1px;
 }
 
 .filter-container:last-child {
@@ -90,6 +110,26 @@ body {
     align-items: flex-start;
     background-color: #f9f9f9;
     overflow: hidden;
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.5s ease;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    will-change: transform, box-shadow;
+}
+
+.lesson:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    background-color: #f0f0f0;
+}
+
+.lesson.slide-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.lesson.slide-in:hover {
+    transform: translateY(-5px);
 }
 
 .lesson-content {
@@ -103,6 +143,14 @@ body {
 .lesson-info {
     flex-grow: 1;
     overflow: hidden;
+    opacity: 0;
+    transform: translateX(-50px);
+    transition: all 0.6s ease;
+}
+
+.lesson.slide-in .lesson-info {
+    opacity: 1;
+    transform: translateX(0);
 }
 
 .lesson h2 {
@@ -201,12 +249,14 @@ body {
 /* Media Queries */
 @media (max-width: 768px) {
     .site-header {
-        padding: 1rem 0.5rem; /* Adjusted padding for smaller screens */
+        padding: 1rem 0.5rem;
         border-radius: 10px;
+        flex-direction: column;
+        align-items: center;
     }
 
     .banner-container {
-      margin-bottom: 0.5rem; /* Reduced margin for smaller screens */
+        margin-bottom: 0.5rem;
     }
 
     .filter-button {
@@ -218,15 +268,15 @@ body {
         flex-direction: column;
         height: auto;
     }
-    
+
     .lesson:nth-child(even) {
         flex-direction: column;
     }
-    
+
     .lesson-content {
         margin: 0 0 20px 0;
     }
-    
+
     .video-container {
         width: 100%;
     }
@@ -238,16 +288,16 @@ body {
         flex-wrap: nowrap;
         align-items: center;
     }
-    
+
     .lesson-content {
         margin: 0 20px 0 0;
     }
-    
+
     .video-container {
         flex: 0 0 560px;
         width: 560px;
     }
-    
+
     .lesson:nth-child(even) .lesson-content {
         margin: 0 0 0 20px;
     }
