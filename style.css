@@ -11,27 +11,24 @@ body {
 /* Header styles */
 .site-header {
     background: linear-gradient(to right, #1a1a1a, #2c3e50);
-    padding: 2rem 1rem;
+    padding: 1rem; /* Reduced padding for header */
     margin-bottom: 2rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
 }
 
-.site-header h1 {
-    font-size: 2.5rem;
-    color: #fff;
-    text-align: center;
-    margin-bottom: 1.5rem;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    border-bottom: 3px solid #3498db;
-    padding-bottom: 0.5rem;
-    display: inline-block;
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
-    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+/* Banner styles */
+.banner-container {
+    width: 100%;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+.banner-image {
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Filter section styles */
@@ -204,13 +201,12 @@ body {
 /* Media Queries */
 @media (max-width: 768px) {
     .site-header {
-        padding: 1.5rem 0.5rem;
+        padding: 1rem 0.5rem; /* Adjusted padding for smaller screens */
         border-radius: 10px;
     }
 
-    .site-header h1 {
-        font-size: 1.8rem;
-        margin-bottom: 1rem;
+    .banner-container {
+      margin-bottom: 0.5rem; /* Reduced margin for smaller screens */
     }
 
     .filter-button {
