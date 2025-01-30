@@ -289,96 +289,96 @@ body {
 }
 
 /* Media Queries */
+/* General styles remain the same until media query */
+
 @media (max-width: 768px) {
-    .desktop-filter {
-        display: none;
-    }
-
-    .mobile-filter {
-        display: block;
-        position: sticky;
-        top: 0;
-        z-index: 100;
-        background-color: #ffffff;
-        margin-bottom: 10px;
-    }
-
-    .site-header {
-         padding: 1rem 0.5rem;
-         border-radius: 10px;
-          flex-direction: column;
-          align-items: center;
-    }
-
-    .banner-container {
-        margin-bottom: 0.5rem;
-    }
-
     .filter-card {
-        padding: 10px;
-         margin-bottom: 0px;
+        padding: 20px;
+        margin-bottom: 20px;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .filter-section {
-       display: flex; /* Display filter groups in a row */
-        flex-wrap: wrap; /* Allow wrapping for smaller screens */
-        justify-content: space-around; /* Space out the groups */
-        align-items: flex-start; /* Align items to the start (top) */
-        gap: 10px; /* Add some spacing between filter groups */
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
-   .filter-group {
-        display: flex; /* Make filter-groups flex containers */
-        flex-direction: column; /* Stack the label and buttons */
-        align-items: flex-start; /* Align items to the start of container */
-        text-align: left;
-        flex: 1;
-       min-width: 150px; /* minimum width*/
-        max-width: 200px; /* maximum width so the filters dont go off the page */
-      margin-bottom: 0;
+    .filter-group {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0;
     }
-
 
     .filter-label {
-      margin-bottom: 3px;
-        padding-bottom: 3px;
-        font-size: 0.8rem;
-        text-align: left;
+        color: #666;
+        font-size: 0.9rem;
+        font-weight: 600;
+        margin-bottom: 10px;
+        text-transform: uppercase;
+        padding-bottom: 5px;
+        border-bottom: none;
+        width: 100%;
     }
 
     .filter-container {
-        display: flex; /* Ensure buttons are in a row*/
-         flex-wrap: wrap; /* wrap if necessary */
-        justify-content: flex-start; /* Align items at the start of the row */
-        gap: 5px; /* spacing*/
-         padding: 5px;
-        width: auto;
-          max-width: 100%;
-        overflow-x: hidden;
-         margin: 0;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        width: 100%;
+        padding: 0;
+        justify-content: flex-start;
     }
-
 
     .filter-button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        border-radius: 25px;
+        background: #3498db;
+        color: white;
+        border: none;
+        min-width: auto;
+        flex: 0 0 auto;
+    }
+
+    .filter-button.active {
+        background: #e74c3c;
+    }
+
+    /* Specific container adjustments */
+    .filter-container.decade-filters,
+    .filter-container.difficulty-filters {
+        margin: 0;
+    }
+
+    /* Adjust spacing between filter groups */
+    .filter-group + .filter-group {
+        margin-top: 15px;
+    }
+
+    /* Mobile-specific heading styles */
+    .filter-group .filter-label {
+        font-size: 1rem;
+        color: #333;
+        margin-bottom: 10px;
+    }
+
+    /* Button sizes and layout */
+    .filter-button {
         padding: 6px 12px;
-        font-size: 0.7rem;
-    }
-
-    .lesson {
-        flex-direction: column;
+        font-size: 0.85rem;
         height: auto;
+        white-space: nowrap;
     }
 
-    .lesson:nth-child(even) {
-        flex-direction: column;
-    }
-
-    .lesson-content {
-        margin: 0 0 20px 0;
-    }
-
-    .video-container {
-        width: 100%;
+    /* Specific adjustments for difficulty stars */
+    .difficulty-filters .filter-button {
+        min-width: 60px;
+        text-align: center;
     }
 }
 
