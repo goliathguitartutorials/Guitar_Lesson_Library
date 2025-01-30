@@ -46,10 +46,38 @@
             </div>
         </div>
     </div>
-    </div>
-    <div class="mini-filter-bar">
-        <div class="active-filters"></div>
-        <button class="filters-button">Filters</button>
+<div class="filter-card mobile-filter">
+    <div class="filter-section">
+        <div class="filter-group">
+            <h3 class="filter-label">Sorting</h3>
+            <div class="filter-container">
+                <button class="filter-button sort-button" data-sort="recent">Most Recent</button>
+                <button class="filter-button sort-button" data-sort="popular">Most Popular</button>
+                <button class="filter-button sort-button" data-sort="a-z">A to Z</button>
+                <button class="filter-button sort-button" data-sort="z-a">Z to A</button>
+            </div>
+        </div>
+        <div class="filter-group">
+            <h3 class="filter-label">Decade</h3>
+            <div class="filter-container decade-filters">
+                <button class="filter-button decade-button" data-filter="60s">60s</button>
+                <button class="filter-button decade-button" data-filter="70s">70s</button>
+                <button class="filter-button decade-button" data-filter="80s">80s</button>
+                <button class="filter-button decade-button" data-filter="90s">90s</button>
+                <button class="filter-button decade-button" data-filter="00s">2000s</button>
+                <button class="filter-button decade-button" data-filter="After 2010">After 2010</button>
+                <button class="filter-button decade-button" data-filter="All">ALL</button>
+            </div>
+        </div>
+        <div class="filter-group">
+            <h3 class="filter-label">Difficulty</h3>
+            <div class="filter-container difficulty-filters">
+                <button class="filter-button difficulty-button" data-filter="1">⭐</button>
+                <button class="filter-button difficulty-button" data-filter="2">⭐⭐</button>
+                <button class="filter-button difficulty-button" data-filter="3">⭐⭐⭐</button>
+                <button class="filter-button difficulty-button" data-filter="All">ALL</button>
+            </div>
+        </div>
     </div>
 </div>
     <div id="lessons-container">
@@ -614,105 +642,6 @@
 
     // Initial render
     renderLessons(lessons);
-        const fullFilterSection = document.querySelector('.full-filter-section');
-    const miniFilterBar = document.querySelector('.mini-filter-bar');
-    const filtersButton = document.querySelector('.filters-button');
-    const activeFiltersContainer = document.querySelector('.active-filters');
-    let activeFilters = [];
-
-
-    function updateActiveFiltersDisplay() {
-    activeFiltersContainer.innerHTML = '';
-    activeFilters.forEach(filter => {
-      const pill = document.createElement('span');
-      pill.classList.add('filter-pill');
-      pill.textContent = filter.label;
-
-        const removeButton = document.createElement('button');
-           removeButton.innerHTML = '×'
-             removeButton.addEventListener('click', () => {
-            removeFilter(filter.type, filter.value)
-            });
-
-       pill.appendChild(removeButton);
-       activeFiltersContainer.appendChild(pill);
-
-      });
-     }
-
-     function addFilter(type, value, label) {
-         const existingFilter = activeFilters.find(filter => filter.type === type && filter.value === value);
-
-        if(!existingFilter) {
-              activeFilters.push({ type: type, value: value, label: label });
-        }
-          updateActiveFiltersDisplay()
-      }
-      function removeFilter(type, value) {
-          activeFilters = activeFilters.filter(filter => !(filter.type === type && filter.value === value));
-          updateActiveFiltersDisplay();
-           if(type === 'sort') {
-                document.querySelectorAll('.sort-button.active').forEach(btn => btn.classList.remove('active'));
-               selectedSort = null;
-            }
-           else if(type === 'decade') {
-                 document.querySelectorAll('.decade-button.active').forEach(btn => btn.classList.remove('active'));
-                selectedDecade = null;
-            }
-           else if(type === 'difficulty') {
-                 document.querySelectorAll('.difficulty-button.active').forEach(btn => btn.classList.remove('active'));
-                selectedDifficulty = null;
-            }
-
-            filterLessons();
-      }
-
-    let timeoutId;
-    function handleScroll() {
-      clearTimeout(timeoutId);
-        timeoutId = setTimeout(() => {
-            if (window.scrollY > 150) {
-                miniFilterBar.classList.remove('hidden');
-             } else {
-                 miniFilterBar.classList.add('hidden');
-             }
-        }, 100);
-     }
-
-
-        window.addEventListener('scroll', handleScroll);
-        handleScroll();
-
-    filtersButton.addEventListener('click', () => {
-       fullFilterSection.classList.toggle('collapsed');
-      });
-        //modify the filter button functionality to call add filter function
-
-      filterButtons.forEach(button => {
-        button.addEventListener('click', function() {
-            const type = this.classList.contains('sort-button') ? 'sort' :
-             this.classList.contains('decade-button') ? 'decade' :
-             this.classList.contains('difficulty-button') ? 'difficulty' : null;
-
-             if(type) {
-                   addFilter(type, this.getAttribute('data-' + type), this.textContent);
-             }
-             if (this.classList.contains('sort-button')) {
-                document.querySelectorAll('.sort-button.active').forEach(btn => btn.classList.remove('active'));
-                selectedSort = this.getAttribute('data-sort');
-                this.classList.add('active');
-             } else if (this.classList.contains('decade-button')) {
-                document.querySelectorAll('.decade-button.active').forEach(btn => btn.classList.remove('active'));
-                 selectedDecade = this.getAttribute('data-filter');
-                  this.classList.add('active');
-            } else if (this.classList.contains('difficulty-button')) {
-                document.querySelectorAll('.difficulty-button.active').forEach(btn => btn.classList.remove('active'));
-                 selectedDifficulty = this.getAttribute('data-filter');
-                this.classList.add('active');
-            }
-            filterLessons();
-        });
-    });
     </script>
 </body>
 </html>
