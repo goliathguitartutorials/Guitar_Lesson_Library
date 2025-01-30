@@ -1,3 +1,4 @@
+--- START OF FILE script.js ---
 const lessons = [
     {
         title: "She Will Be Loved (Maroon 5)",
@@ -436,6 +437,7 @@ let selectedSort = null;
 let selectedDecade = null;
 let selectedDifficulty = null; // New variable for difficulty
 
+
 /**
  * Activates the clicked filter button and deactivates other buttons in the same group.
  * @param {HTMLElement} button - The button that was clicked.
@@ -496,14 +498,33 @@ function renderLessons(lessonsArray) {
          this.innerHTML = '';
          this.appendChild(iframe);
   });
+
+      let previousY = null; // Store previous boundingClientRect.y for scroll direction
+
       const observer = new IntersectionObserver(entries => {
           entries.forEach(entry => {
+              const currentY = entry.boundingClientRect.y;
+              const isScrollingDown = previousY === null || currentY < previousY; // Infer scroll direction
+
               if (entry.isIntersecting) {
-                  entry.target.classList.add('slide-in');
-                   observer.unobserve(entry.target);
-                 }
+                  if (isScrollingDown) {
+                      entry.target.classList.add('slide-in');
+                      entry.target.classList.remove('slide-out'); // Ensure slide-out is removed when sliding in again
+                  } else {
+                      entry.target.classList.remove('slide-in'); // Remove slide-in when scrolling back up
+                      entry.target.classList.add('slide-out');     // Add slide-out to animate out
+                  }
+                  observer.unobserve(entry.target); // Observe only once to trigger animation each time entering/leaving
+              } else {
+                  if (!isScrollingDown) { // If scrolling up and element is NOT intersecting (gone out of view)
+                     entry.target.classList.add('slide-out'); // Ensure slide-out class is added when scrolling up and out
+                     entry.target.classList.remove('slide-in'); // Remove slide-in class for clean state
+                  }
+              }
+              previousY = currentY; // Update previousY for next intersection check
           });
-    }, {threshold: 0.2});
+    }, {threshold: 0.2}); // Adjust threshold if needed
+
      observer.observe(lessonDiv);
 });
 
@@ -566,3 +587,4 @@ renderLessons(filteredLessons);
 
 // Initial render
 renderLessons(lessons);
+--- END OF FILE script.js ---
