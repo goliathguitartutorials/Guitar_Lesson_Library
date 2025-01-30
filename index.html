@@ -540,19 +540,26 @@
               const observer = new IntersectionObserver(entries => {
                   entries.forEach(entry => {
                       const lessonElement = entry.target;
+                      const rect = entry.boundingClientRect;
+                      const viewportHeight = window.innerHeight;
+
                       if (entry.isIntersecting) {
-                          lessonElement.classList.add('slide-in');
-                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
+                          // Appear: Top of panel is within the bottom half of the viewport
+                          if (rect.top <= viewportHeight / 2) {
+                              lessonElement.classList.add('slide-in');
+                          }
                          } else {
-                            // Check scroll direction to animate out on scroll up
+                            // Disappear: Bottom of panel is above the midpoint of the viewport when scrolling up
                             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                             if (scrollTop < lastScrollTop) { // Scrolling Up
-                                lessonElement.classList.remove('slide-in'); // Animate out - ALWAYS on scroll up!
+                                if (rect.bottom <= viewportHeight / 2) {
+                                    lessonElement.classList.remove('slide-in'); // Animate out
+                                }
                             }
                             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
                          }
                   });
-            }, {threshold: 0.2});
+            }, {threshold: 0}); // Remove threshold, we handle visibility in code
              observer.observe(lessonDiv);
         });
 
