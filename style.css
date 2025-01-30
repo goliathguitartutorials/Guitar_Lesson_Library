@@ -322,12 +322,18 @@ body {
 
     .filter-section {
         flex-direction: column; /* Stack filter groups on mobile */
-        align-items: center; /* Center filter groups on mobile */
+        align-items: flex-start; /* Center filter groups on mobile */
         gap: 5px; /* reduced gap */
     }
 
     .filter-group {
          min-width: auto; /* allow the filter groups to take up the full width */
+          margin-bottom: 0; /* Remove any bottom margin on the filter groups*/
+    }
+
+         .mobile-filter .filter-group{
+          align-items: flex-start; /* Align groups to the start on mobile */
+
     }
 
 
@@ -341,9 +347,14 @@ body {
       .filter-container {
           padding: 5px;
           gap: 5px;
-             flex-wrap: nowrap; /* Prevent wrapping */
-        overflow-x: auto; /* Enable horizontal scrolling */
-        white-space: nowrap; /* Ensure buttons stay in a single row */
+             flex-wrap: wrap; /* Allow Wrapping on mobile*/
+        overflow-x: hidden;
+    }
+
+
+       .mobile-filter .filter-container{
+          justify-content: flex-start; /*Align buttons to the start on mobile */
+
     }
 
 
