@@ -8,9 +8,9 @@ body {
     margin: 0 auto;
     padding: 20px;
     box-sizing: border-box;
-+   display: flex; /* Add this */
-+   flex-direction: column; /* Add this */
-+   align-items: center; /* Add this to center content horizontally */
+    display: flex; /* Add this */
+    flex-direction: column; /* Add this */
+    align-items: center; /* Add this to center content horizontally */
 }
 
 /* Header styles */
@@ -414,4 +414,7 @@ body {
     .lesson:nth-child(even) .lesson-content {
         margin: 0 0 0 20px;
     }
++   .filter-card {
++        max-width: 1000px; /* Increased max-width for desktop filter */
++   }
 }
