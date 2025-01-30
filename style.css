@@ -50,13 +50,10 @@ body {
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
     padding: 15px;
-    z-index: 100;
-    background-color: #ffffff;
-}
-
-.filter-card.sticky {
     position: sticky;
     top: 0;
+    z-index: 100;
+    background-color: #ffffff;
 }
 
 /* Filter section styles */
@@ -64,7 +61,7 @@ body {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
-    padding: 15px; /* Initial padding when expanded */
+    padding: 0;
     border-radius: 5px;
     box-shadow: none;
     background-color: transparent;
@@ -72,21 +69,7 @@ body {
     flex-wrap: wrap;
     justify-content: space-around;
     gap: 10px;
-    transition: max-height 0.3s ease-out, padding 0.3s ease-out; /* For smooth collapse */
-    overflow: hidden; /* Ensure content is hidden when collapsed */
-    max-height: 500px; /* Initial max-height when expanded - adjust if needed */
 }
-
-.filter-section.collapsed {
-    max-height: 0;
-    padding: 0 15px; /* Keep horizontal padding, remove vertical padding */
-}
-
-.filter-section.expanded {
-    max-height: 500px; /* Adjust as needed, or use a large value to accommodate content */
-    padding: 15px; /* Padding when expanded */
-}
-
 
 .filter-group {
     display: flex;
@@ -305,92 +288,23 @@ body {
     flex-direction: row-reverse;
 }
 
-/* Mobile Mini Filter Bar Styles */
-.mobile-filter-bar {
-    display: none; /* Hidden by default, shown on scroll (mobile view) */
-    position: sticky;
-    top: 0;
-    z-index: 99; /* Below the full filter card */
-    background-color: rgba(255, 255, 255, 0.95); /* Slightly transparent white */
-    padding: 10px 15px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    border-bottom: 1px solid #eee;
-    border-radius: 0 0 10px 10px;
-    max-width: 1000px;
-    width: 100%;
-    margin: 0 auto;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.mobile-filter-bar button#filter-expand-button {
-    padding: 8px 12px;
-    background: #3498db;
-    color: white;
-    border: none;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 0.9rem;
-}
-
-.mobile-filter-bar .active-filters {
-    display: flex;
-    gap: 5px;
-    align-items: center;
-}
-
-.mobile-filter-bar .active-filter-pill {
-    background-color: #f0f0f0;
-    color: #555;
-    padding: 5px 8px;
-    border-radius: 15px;
-    font-size: 0.8rem;
-    white-space: nowrap;
-}
-
-
 /* Media Queries */
 /* General styles remain the same until media query */
 
 @media (max-width: 768px) {
-
-    .desktop-filter {
-        display: none; /* Hide desktop filter on mobile */
-    }
-
-    .mobile-filter-bar {
-        display: flex; /* Show mobile filter bar on mobile */
-    }
-
     .filter-card {
         padding: 20px;
-        margin-bottom: 10px; /* Less margin on mobile */
+        margin-bottom: 20px;
         background-color: #ffffff;
-        border-radius: 0; /* No border radius on mobile full filter */
-        box-shadow: none; /* No shadow on mobile full filter */
-        margin-bottom: 0; /* Remove bottom margin so it sticks to top */
-        border-radius: 0;
-    }
-
-    .filter-card.sticky {
-        position: static; /* No sticky for the full card on mobile */
+        border-radius: 10px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     }
 
     .filter-section {
         display: flex;
         flex-direction: column;
         gap: 20px;
-        max-height: 500px; /* Initial full height */
-        padding: 0 15px; /* Initial horizontal padding */
     }
-
-    .filter-section.collapsed {
-        max-height: 0;
-        padding: 0 15px; /* Keep horizontal padding when collapsed */
-    }
-
 
     .filter-group {
         width: 100%;
@@ -470,18 +384,9 @@ body {
 
 /* Desktop View */
 @media (min-width: 769px) {
-
-    .mobile-filter-bar {
-        display: none; /* Hide mobile filter bar on desktop */
+   .mobile-filter{
+      display: none;
     }
-    .desktop-filter{
-      display: block;
-    }
-    .filter-card {
-        position: sticky; /* Make desktop filter sticky on desktop */
-        top: 0;
-    }
-
     .lesson {
         flex-wrap: nowrap;
         align-items: center;
