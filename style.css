@@ -292,21 +292,44 @@ body {
 /* General styles remain the same until media query */
 
 @media (max-width: 768px) {
-    .filter-card {
-        padding: 20px;
+
+    .mobile-filter {
+        width: 100%;
         margin-bottom: 20px;
+        position: relative; /* for the mini bar's positioning */
+    }
+
+    /* Full Filter Section Styles */
+    .full-filter-section {
+        transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out, padding 0.5s ease-in-out;
+        overflow: hidden;
+        max-height: 500px;
+        opacity: 1;
+        padding-bottom: 20px;
+    }
+
+    .full-filter-section.collapsed {
+        max-height: 0;
+        opacity: 0;
+        padding-bottom: 0px;
+
+    }
+
+     .full-filter-section .filter-card{
+           padding: 20px;
+        margin-bottom: 0px;
         background-color: #ffffff;
         border-radius: 10px;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    }
+     }
 
-    .filter-section {
+    .full-filter-section .filter-section {
         display: flex;
         flex-direction: column;
         gap: 20px;
     }
 
-    .filter-group {
+      .full-filter-section .filter-group {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -314,7 +337,7 @@ body {
         margin: 0;
     }
 
-    .filter-label {
+     .full-filter-section .filter-label {
         color: #666;
         font-size: 0.9rem;
         font-weight: 600;
@@ -325,7 +348,7 @@ body {
         width: 100%;
     }
 
-    .filter-container {
+     .full-filter-section .filter-container {
         display: flex;
         flex-wrap: wrap;
         gap: 8px;
@@ -334,7 +357,7 @@ body {
         justify-content: flex-start;
     }
 
-    .filter-button {
+     .full-filter-section .filter-button {
         padding: 8px 16px;
         font-size: 0.8rem;
         border-radius: 25px;
@@ -345,30 +368,31 @@ body {
         flex: 0 0 auto;
     }
 
-    .filter-button.active {
+     .full-filter-section .filter-button.active {
         background: #e74c3c;
     }
 
+
     /* Specific container adjustments */
-    .filter-container.decade-filters,
-    .filter-container.difficulty-filters {
+     .full-filter-section .filter-container.decade-filters,
+     .full-filter-section .filter-container.difficulty-filters {
         margin: 0;
     }
 
     /* Adjust spacing between filter groups */
-    .filter-group + .filter-group {
+    .full-filter-section .filter-group + .filter-group {
         margin-top: 15px;
     }
 
     /* Mobile-specific heading styles */
-    .filter-group .filter-label {
+    .full-filter-section .filter-group .filter-label {
         font-size: 1rem;
         color: #333;
         margin-bottom: 10px;
     }
 
     /* Button sizes and layout */
-    .filter-button {
+    .full-filter-section .filter-button {
         padding: 6px 12px;
         font-size: 0.85rem;
         height: auto;
@@ -376,11 +400,72 @@ body {
     }
 
     /* Specific adjustments for difficulty stars */
-    .difficulty-filters .filter-button {
+   .full-filter-section .difficulty-filters .filter-button {
         min-width: 60px;
         text-align: center;
     }
-}
+
+    /* Mini Filter Bar Styles */
+     .mini-filter-bar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 10px 20px;
+        background-color: #f0f0f0;
+        position: sticky;
+        top: 0;
+        z-index: 101;
+        border-bottom: 1px solid #ddd;
+        transition: all 0.3s ease;
+         border-radius: 0 0 10px 10px;
+    }
+     .mini-filter-bar.hidden {
+        transform: translateY(-100%);
+    }
+
+    .mini-filter-bar .active-filters {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 5px;
+        flex: 1;
+    }
+
+    .mini-filter-bar .active-filters .filter-pill {
+        background-color: #e74c3c;
+        color: white;
+        padding: 4px 8px;
+        border-radius: 15px;
+        font-size: 0.8rem;
+        display: inline-flex;
+         align-items: center;
+          gap: 4px;
+         text-transform: capitalize;
+    }
+
+    .mini-filter-bar .active-filters .filter-pill button {
+        background: none;
+        border: none;
+        color: white;
+          cursor: pointer;
+          padding: 0;
+           font-size: 1.2rem;
+           line-height: 1;
+    }
+
+    .mini-filter-bar .filters-button {
+        padding: 8px 16px;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        border-radius: 20px;
+        cursor: pointer;
+        font-size: 0.9rem;
+        transition: background-color 0.3s ease;
+    }
+    .mini-filter-bar .filters-button:hover {
+        background-color: #2980b9;
+    }
+  }
 
 /* Desktop View */
 @media (min-width: 769px) {
