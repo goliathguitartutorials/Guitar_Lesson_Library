@@ -54,13 +54,28 @@ body {
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: #ffffff;
+-   background-color: #ffffff;
     padding: 15px;
     position: sticky;
     top: 0;
     z-index: 100;
-    background-color: #ffffff;
-}
+-   background-color: #ffffff;
++   background-color: transparent; /* Make the filter-card itself transparent */
++   position: relative; /* For positioning the pseudo-element */
+    }
+
++ .filter-card::before {
++    content: '';
++    position: absolute;
++    top: 0;
++    right: 0;
++    bottom: 0;
++    left: 0;
++    background-color: rgba(255, 255, 255, 0.9); /* Opaque white background - adjust alpha for opacity */
++    z-index: -1; /* Place the background behind the content */
++    border-radius: 10px; /* Match the filter-card border-radius */
++ }
+
 
 /* Filter section styles */
 .filter-section {
@@ -415,7 +430,6 @@ body {
         margin: 0 0 0 20px;
     }
     .filter-card {
--       max-width: 1000px; /* Increased max-width for desktop filter */
-+       max-width: 1200px; /* Increased max-width for desktop filter to be wider than lessons */
+        max-width: 1200px; /* Increased max-width for desktop filter to be wider than lessons */
     }
 }
