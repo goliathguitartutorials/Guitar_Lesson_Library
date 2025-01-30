@@ -54,13 +54,11 @@ body {
     margin-bottom: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
--   background-color: transparent; /* Make the filter-card itself transparent */
+    background-color: white; /* Set filter-card background to white */
     padding: 15px;
     position: sticky;
     top: 0;
     z-index: 100;
-+   background-color: white; /* Set filter-card background to white */
-+   opacity: 0.9; /* Adjust opacity for desired effect */
 }
 
 - .filter-card::before {
