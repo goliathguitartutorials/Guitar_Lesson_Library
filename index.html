@@ -650,6 +650,105 @@
 
     // Initial render
     renderLessons(lessons);
+        const fullFilterSection = document.querySelector('.full-filter-section');
+    const miniFilterBar = document.querySelector('.mini-filter-bar');
+    const filtersButton = document.querySelector('.filters-button');
+    const activeFiltersContainer = document.querySelector('.active-filters');
+    let activeFilters = [];
+
+
+    function updateActiveFiltersDisplay() {
+    activeFiltersContainer.innerHTML = '';
+    activeFilters.forEach(filter => {
+      const pill = document.createElement('span');
+      pill.classList.add('filter-pill');
+      pill.textContent = filter.label;
+
+        const removeButton = document.createElement('button');
+           removeButton.innerHTML = '×'
+             removeButton.addEventListener('click', () => {
+            removeFilter(filter.type, filter.value)
+            });
+
+       pill.appendChild(removeButton);
+       activeFiltersContainer.appendChild(pill);
+
+      });
+     }
+
+     function addFilter(type, value, label) {
+         const existingFilter = activeFilters.find(filter => filter.type === type && filter.value === value);
+
+        if(!existingFilter) {
+              activeFilters.push({ type: type, value: value, label: label });
+        }
+          updateActiveFiltersDisplay()
+      }
+      function removeFilter(type, value) {
+          activeFilters = activeFilters.filter(filter => !(filter.type === type && filter.value === value));
+          updateActiveFiltersDisplay();
+           if(type === 'sort') {
+                document.querySelectorAll('.sort-button.active').forEach(btn => btn.classList.remove('active'));
+               selectedSort = null;
+            }
+           else if(type === 'decade') {
+                 document.querySelectorAll('.decade-button.active').forEach(btn => btn.classList.remove('active'));
+                selectedDecade = null;
+            }
+           else if(type === 'difficulty') {
+                 document.querySelectorAll('.difficulty-button.active').forEach(btn => btn.classList.remove('active'));
+                selectedDifficulty = null;
+            }
+
+            filterLessons();
+      }
+
+    let timeoutId;
+    function handleScroll() {
+      clearTimeout(timeoutId);
+        timeoutId = setTimeout(() => {
+            if (window.scrollY > 150) {
+                miniFilterBar.classList.remove('hidden');
+             } else {
+                 miniFilterBar.classList.add('hidden');
+             }
+        }, 100);
+     }
+
+
+        window.addEventListener('scroll', handleScroll);
+        handleScroll();
+
+    filtersButton.addEventListener('click', () => {
+       fullFilterSection.classList.toggle('collapsed');
+      });
+        //modify the filter button functionality to call add filter function
+
+      filterButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const type = this.classList.contains('sort-button') ? 'sort' :
+             this.classList.contains('decade-button') ? 'decade' :
+             this.classList.contains('difficulty-button') ? 'difficulty' : null;
+
+             if(type) {
+                   addFilter(type, this.getAttribute('data-' + type), this.textContent);
+             }
+             if (this.classList.contains('sort-button')) {
+                document.querySelectorAll('.sort-button.active').forEach(btn => btn.classList.remove('active'));
+                selectedSort = this.getAttribute('data-sort');
+                this.classList.add('active');
+             } else if (this.classList.contains('decade-button')) {
+                document.querySelectorAll('.decade-button.active').forEach(btn => btn.classList.remove('active'));
+                 selectedDecade = this.getAttribute('data-filter');
+                  this.classList.add('active');
+            } else if (this.classList.contains('difficulty-button')) {
+                document.querySelectorAll('.difficulty-button.active').forEach(btn => btn.classList.remove('active'));
+                 selectedDifficulty = this.getAttribute('data-filter');
+                this.classList.add('active');
+            }
+            filterLessons();
+        });
+    });
     </script>
 </body>
 </html>
