@@ -26,6 +26,7 @@ body {
     border: 1px solid #ddd;
     max-width: 1000px;
     width: 100%;
+    margin: 0 auto; /* ADD THIS LINE */
 }
 
 /* Banner styles */
@@ -36,6 +37,7 @@ body {
     justify-content: center;
     max-width: 1000px;
     width: 100%;
+    margin: 0 auto; /* ADD THIS LINE */
 }
 
 .banner-image {
