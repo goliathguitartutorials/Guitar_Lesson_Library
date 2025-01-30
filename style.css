@@ -6,22 +6,22 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
+    box-sizing: border-box;
 }
 
 /* Header styles */
 .site-header {
     background: linear-gradient(to right, #1a1a1a, #2c3e50);
     padding: 1rem;
-    margin-bottom: 2rem;
+    margin-bottom: 1rem;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
     align-items: center;
     border: 1px solid #ddd;
-    max-width: 1000px; /* Match body's max-width */
+    max-width: 1000px;
     width: 100%;
-    box-sizing: border-box; /* Ensure padding/border is included in the width */
 }
 
 /* Banner styles */
@@ -30,10 +30,8 @@ body {
     margin-bottom: 1rem;
     display: flex;
     justify-content: center;
-    max-width: 1000px; /* Match body's max-width */
-     box-sizing: border-box; /* Ensure padding/border is included in the width */
-     width: 100%;
-
+    max-width: 1000px;
+    width: 100%;
 }
 
 .banner-image {
@@ -42,25 +40,58 @@ body {
     display: block;
 }
 
+/* Filter Card styles */
+.filter-card {
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    background-color: #ffffff;
+    padding: 15px;
+}
+
 /* Filter section styles */
 .filter-section {
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
-    padding: 15px;
-    margin-bottom: 20px;
+    padding: 0;
     border-radius: 5px;
-    box-shadow: none; /* Changed to none */
+    box-shadow: none;
     background-color: transparent;
-    box-sizing: border-box;
+    display: flex;
+    flex-wrap: wrap; /* Allow filter groups to wrap */
+    justify-content: space-around; /* Distribute groups evenly */
+    gap: 10px; /* Reduced gap */
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Align labels to center */
+    text-align: center;
+     margin-bottom: 5px; /* Reduced spacing */
+     flex: 1; /* Allow each group to take equal space */
+     min-width: 150px; /* set a minimum width */
+}
+
+.filter-label{
+    margin-bottom: 5px; /* Reduced spacing */
+    font-weight: bold;
+    text-transform: uppercase;
+    color: #555;
+    letter-spacing: 1px;
+    font-size: 0.9rem; /* Slightly smaller font */
 }
 
 .filter-container {
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    gap: 12px;
-    padding: 15px;
+    gap: 8px; /* Reduced gap */
+    padding: 8px; /* Reduced padding */
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.2);
     max-width: max-content;
@@ -68,12 +99,16 @@ body {
     margin: 0 auto;
 }
 
+.filter-container.difficulty-filters {
+    margin-top: 0px;
+}
+
 .filter-container.primary-filters {
-    margin-bottom: 15px;
+    margin-bottom: 0px;
 }
 
 .filter-button {
-    padding: 10px 20px;
+    padding: 8px 16px; /* Reduced padding */
     background: linear-gradient(145deg, #3498db, #2980b9);
     color: white;
     border: none;
@@ -83,8 +118,8 @@ body {
     font-weight: 500;
     text-transform: uppercase;
     letter-spacing: 1px;
-    font-size: 0.9rem;
-    box-shadow: none; /* changed to none */
+    font-size: 0.8rem; /* Slightly smaller font */
+    box-shadow: none;
 }
 
 .filter-button:hover {
