@@ -12,18 +12,8 @@
             <img src="images/banner.png" alt="Banner Image" class="banner-image">
         </div>
     </header>
-
-    <!-- Mobile Mini Filter Bar -->
-    <div class="mobile-filter-bar">
-        <div class="active-filters">
-            <!-- Active filters will be displayed here by JavaScript -->
-        </div>
-        <button id="filter-expand-button">Filters</button>
-    </div>
-
-    <!-- Filter Card (Full Section) -->
-    <div class="filter-card desktop-filter sticky" id="filter-card">
-        <div class="filter-section collapsed" id="filter-section"> <!-- Initially collapsed for mobile -->
+ <div class="filter-card desktop-filter">
+        <div class="filter-section">
             <div class="filter-group">
                 <h3 class="filter-label">Sorting</h3>
                 <div class="filter-container primary-filters">
@@ -493,15 +483,9 @@
         ];
         const lessonsContainer = document.getElementById('lessons-container');
         const filterButtons = document.querySelectorAll('.filter-button');
-        const filterSection = document.getElementById('filter-section');
-        const filterCard = document.getElementById('filter-card');
-        const filterExpandButton = document.getElementById('filter-expand-button');
-        const mobileFilterBar = document.querySelector('.mobile-filter-bar');
-
         let selectedSort = null;
         let selectedDecade = null;
         let selectedDifficulty = null; // New variable for difficulty
-        let isFilterSectionExpanded = false; // Track filter section state - start as collapsed
 
         function renderLessons(lessonsArray) {
             lessonsContainer.innerHTML = '';
@@ -600,7 +584,6 @@
 
         renderLessons(filteredLessons);
             window.scrollTo({ top: 0, behavior: 'instant' });
-             updateActiveFiltersDisplay(); // Update mini filter bar
     }
 
      filterButtons.forEach(button => {
@@ -623,95 +606,8 @@
         });
     });
 
-    filterExpandButton.addEventListener('click', () => {
-        console.log('Filter button clicked!'); // DEBUG: Check if button click is registered
-        isFilterSectionExpanded = !isFilterSectionExpanded;
-        console.log('isFilterSectionExpanded:', isFilterSectionExpanded); // DEBUG: Check variable toggle
-        if (isFilterSectionExpanded) {
-            filterSection.classList.remove('collapsed');
-            filterSection.classList.add('expanded');
-             console.log('Filter section expanded'); // DEBUG: Check if expanded class is added
-        } else {
-            filterSection.classList.remove('expanded');
-            filterSection.classList.add('collapsed');
-             console.log('Filter section collapsed'); // DEBUG: Check if collapsed class is added
-        }
-    });
-
-
-    window.addEventListener('scroll', () => {
-        const rect = filterCard.getBoundingClientRect();
-        if (rect.bottom <= 0) {
-            mobileFilterBar.style.display = 'flex'; // Show mini filter bar
-            filterCard.classList.remove('sticky'); // Remove sticky from full filter
-        } else {
-            mobileFilterBar.style.display = 'none'; // Hide mini filter bar
-            filterCard.classList.add('sticky'); // Add sticky back to full filter
-        }
-    });
-
-    function updateActiveFiltersDisplay() {
-        const activeFiltersContainer = mobileFilterBar.querySelector('.active-filters');
-        activeFiltersContainer.innerHTML = ''; // Clear previous pills
-
-        let activeFilters = [];
-        if (selectedSort) {
-            const sortButton = document.querySelector(`.sort-button.active`);
-            if (sortButton) activeFilters.push({label: "Sort:", value: sortButton.textContent});
-        }
-        if (selectedDecade && selectedDecade !== "All") {
-            const decadeButton = document.querySelector(`.decade-button.active`);
-             if (decadeButton) activeFilters.push({label: "Decade:", value: decadeButton.textContent});
-        }
-        if (selectedDifficulty && selectedDifficulty !== "All") {
-            const difficultyButton = document.querySelector(`.difficulty-button.active`);
-             if (difficultyButton) activeFilters.push({label: "Difficulty:", value: difficultyButton.textContent});
-        }
-
-
-        activeFilters.forEach(filter => {
-            const pill = document.createElement('div');
-            pill.classList.add('active-filter-pill');
-            pill.textContent = `${filter.label} ${filter.value}`;
-            activeFiltersContainer.appendChild(pill);
-        });
-    }
-
-
     // Initial render
     renderLessons(lessons);
-    updateActiveFiltersDisplay(); // Initial display of active filters (if any default selections)
-     filterSection.classList.add('collapsed'); // Initially collapsed on mobile
-     mobileFilterBar.style.display = 'flex'; // Initially show mini filter bar on mobile
-     filterCard.classList.remove('sticky'); // Initially remove sticky from full filter on mobile
-     if (window.innerWidth >= 769) { // Desktop view
-        filterSection.classList.remove('collapsed'); // Expand on desktop
-        filterSection.classList.remove('expanded');
-        mobileFilterBar.style.display = 'none'; // Hide mini filter bar on desktop
-        filterCard.classList.add('sticky'); // Sticky on desktop
-    } else { // Mobile view on initial load
-         filterSection.classList.add('collapsed'); // Collapse on mobile
-         filterSection.classList.remove('expanded');
-         mobileFilterBar.style.display = 'flex'; // Show mini filter bar on mobile
-         filterCard.classList.remove('sticky'); // No sticky on mobile for full filter
-    }
-
-    // Re-evaluate sticky and filter display on resize (for example, if switching from mobile to desktop view by resizing browser window)
-    window.addEventListener('resize', function() {
-        if (window.innerWidth >= 769) { // Desktop view
-            filterSection.classList.remove('collapsed'); // Expand on desktop
-            filterSection.classList.remove('expanded');
-            mobileFilterBar.style.display = 'none'; // Hide mini filter bar on desktop
-            filterCard.classList.add('sticky'); // Sticky on desktop
-        } else { // Mobile view
-             filterSection.classList.add('collapsed'); // Collapse on mobile
-             filterSection.classList.remove('expanded');
-             mobileFilterBar.style.display = 'flex'; // Show mini filter bar on mobile
-             filterCard.classList.remove('sticky'); // No sticky on mobile for full filter
-        }
-    });
-
-
     </script>
 </body>
 </html>
