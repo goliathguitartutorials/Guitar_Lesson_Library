@@ -290,58 +290,61 @@ body {
 
 /* Media Queries */
 @media (max-width: 768px) {
-  .desktop-filter {
-      display: none; /* Hide desktop filters on mobile */
+    .desktop-filter {
+        display: none; /* Hide desktop filters on mobile */
     }
 
-   .mobile-filter {
-      display: block; /* Show mobile filters on mobile */
-       position: sticky;
+    .mobile-filter {
+        display: block; /* Show mobile filters on mobile */
+        position: sticky;
         top: 0;
         z-index: 100;
         background-color: #ffffff;
-          margin-bottom: 10px;
+        margin-bottom: 10px;
     }
 
-      .site-header {
+    .site-header {
         padding: 1rem 0.5rem;
         border-radius: 10px;
         flex-direction: column;
         align-items: center;
     }
 
-     .banner-container {
+    .banner-container {
         margin-bottom: 0.5rem;
     }
 
-      .filter-card {
-      padding: 10px; /* Adjusted padding for mobile */
-       margin-bottom: 0px; /* reduced margin */
+    .filter-card {
+        padding: 10px;
+        margin-bottom: 0px;
     }
 
-
     .filter-section {
-        flex-direction: column; /* Stack filter groups on mobile */
-        align-items: flex-start; /* Center filter groups on mobile */
-        gap: 5px; /* reduced gap */
+          flex-direction: column;
+        align-items: center; /* Center filter groups on mobile */
+         gap: 15px;
     }
 
     .filter-group {
-         min-width: auto; /* allow the filter groups to take up the full width */
-          margin-bottom: 0; /* Remove any bottom margin on the filter groups*/
-    }
-
-         .mobile-filter .filter-group{
-          align-items: flex-start; /* Align groups to the start on mobile */
+           min-width: auto; /* allow the filter groups to take up the full width */
+        margin-bottom: 0; /* Remove any bottom margin on the filter groups*/
+       width: 100%; /* Ensure groups take full width */
 
     }
+
+
+      .mobile-filter .filter-group{
+          align-items: center; /* Align groups to the center on mobile */
+
+    }
+
 
 
      .filter-label {
          font-size: 0.8rem;
         margin-bottom: 3px;
         padding-bottom: 3px;
-
+           text-align: center;/* Centre the filter title on mobile */
     }
 
       .filter-container {
@@ -349,13 +352,28 @@ body {
           gap: 5px;
              flex-wrap: wrap; /* Allow Wrapping on mobile*/
         overflow-x: hidden;
+         max-width: 100%; /* Ensure the container takes full width */
+        width: 100%; /* ensure the width takes full width */
+
+    }
+
+    .mobile-filter .filter-container {
+        display: flex;
+       justify-content: center; /* Centre the buttons on mobile */
+      width: auto; /* Ensure the container takes full width */
+        margin: 0 auto; /* Center the filter buttons container*/
+          max-width: max-content; /* Fit the container to its buttons */
     }
 
 
-       .mobile-filter .filter-container{
-          justify-content: flex-start; /*Align buttons to the start on mobile */
 
-    }
+     .mobile-filter .filter-container.primary-filters {
+        margin-bottom: 10px; /* Add margin below the first row */
+     }
+
+         .mobile-filter .filter-container.decade-filters {
+            margin-bottom: 10px; /* Add margin below the second row */
+         }
 
 
     .filter-button {
