@@ -12,7 +12,7 @@
             <img src="images/banner.png" alt="Banner Image" class="banner-image">
         </div>
     </header>
-    <div class="filter-card">
+ <div class="filter-card desktop-filter">
         <div class="filter-section">
             <div class="filter-group">
                 <h3 class="filter-label">Sorting</h3>
@@ -44,6 +44,30 @@
                     <button class="filter-button difficulty-button" data-filter="All">All</button>
                 </div>
             </div>
+        </div>
+    </div>
+    <div class="filter-card mobile-filter">
+      <div class="filter-section">
+           <div class="filter-group">
+                <h3 class="filter-label">Filters</h3>
+                <div class="filter-container primary-filters">
+                      <button class="filter-button sort-button" data-sort="recent">Recent</button>
+                    <button class="filter-button sort-button" data-sort="popular">Popular</button>
+                       <button class="filter-button sort-button" data-sort="a-z">A-Z</button>
+                      <button class="filter-button sort-button" data-sort="z-a">Z-A</button>
+                     <button class="filter-button decade-button" data-filter="60s">60s</button>
+                    <button class="filter-button decade-button" data-filter="70s">70s</button>
+                    <button class="filter-button decade-button" data-filter="80s">80s</button>
+                    <button class="filter-button decade-button" data-filter="90s">90s</button>
+                    <button class="filter-button decade-button" data-filter="00s">00s</button>
+                    <button class="filter-button decade-button" data-filter="After 2010">After 2010</button>
+                     <button class="filter-button difficulty-button" data-filter="1">⭐</button>
+                    <button class="filter-button difficulty-button" data-filter="2">⭐⭐</button>
+                    <button class="filter-button difficulty-button" data-filter="3">⭐⭐⭐</button>
+                    <button class="filter-button decade-button" data-filter="All">All</button>
+                    <button class="filter-button difficulty-button" data-filter="All">All</button>
+                </div>
+              </div>
         </div>
     </div>
     <div id="lessons-container">
@@ -512,7 +536,9 @@
           lessonsContainer.appendChild(lessonDiv);
 
            const videoContainer = lessonDiv.querySelector('.video-container');
-           videoContainer.addEventListener('click', function() {              const videoId = this.getAttribute('data-video-id');
+           videoContainer.addEventListener('click', function() {
+
+              const videoId = this.getAttribute('data-video-id');
                const iframe = document.createElement('iframe');
                iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
                iframe.title = 'YouTube video player';
@@ -545,7 +571,7 @@
         });
 
         }
-    function filterLessons() {
+        function filterLessons() {
         let filteredLessons = [...lessons];
 
         // Apply sort if selected
@@ -581,6 +607,7 @@
 
 
         renderLessons(filteredLessons);
+            window.scrollTo({ top: 0, behavior: 'instant' });
     }
 
      filterButtons.forEach(button => {
