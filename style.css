@@ -44,15 +44,15 @@ body {
 
 /* Filter section styles */
 .filter-section {
-     max-width: 1000px; /* Match body's max-width */
-     width: 100%;
-     margin: 0 auto;
+    max-width: 1000px;
+    width: 100%;
+    margin: 0 auto;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-shadow: none; /* Changed to none */
     background-color: transparent;
-    box-sizing: border-box; /* Ensure padding/border is included in the width */
+    box-sizing: border-box;
 }
 
 .filter-container {
@@ -63,13 +63,13 @@ body {
     padding: 15px;
     border-radius: 5px;
     background: rgba(255, 255, 255, 0.2);
-     max-width: 100%;
-    width: 100%;
-     margin-left: -1px;
+    max-width: max-content;
+    width: auto;
+    margin: 0 auto;
 }
 
-.filter-container:last-child {
-    margin-bottom: 0;
+.filter-container.primary-filters {
+    margin-bottom: 15px;
 }
 
 .filter-button {
@@ -84,7 +84,7 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.9rem;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    box-shadow: none; /* changed to none */
 }
 
 .filter-button:hover {
@@ -106,8 +106,8 @@ body {
     margin-bottom: 20px;
     border-radius: 5px;
     display: flex;
-    flex-wrap: nowrap;
-    align-items: center;
+    flex-wrap: wrap;
+    align-items: flex-start;
     background-color: #f9f9f9;
     overflow: hidden;
     opacity: 0;
@@ -134,7 +134,7 @@ body {
 
 .lesson-content {
     flex: 1 1 300px;
-    margin: 0 20px 0 0;
+    margin: 0 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -188,8 +188,7 @@ body {
 .video-container {
     position: relative;
     cursor: pointer;
-    flex: 0 0 560px;
-        width: 560px;
+    max-width: 100%;
     aspect-ratio: 16 / 9;
     align-self: center;
     overflow: hidden;
@@ -247,6 +246,59 @@ body {
     flex-direction: row-reverse;
 }
 
-.lesson:nth-child(even) .lesson-content {
-    margin: 0 0 0 20px;
+/* Media Queries */
+@media (max-width: 768px) {
+    .site-header {
+        padding: 1rem 0.5rem;
+        border-radius: 10px;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .banner-container {
+        margin-bottom: 0.5rem;
+    }
+
+    .filter-button {
+        padding: 8px 16px;
+        font-size: 0.8rem;
+    }
+
+    .lesson {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .lesson:nth-child(even) {
+        flex-direction: column;
+    }
+
+    .lesson-content {
+        margin: 0 0 20px 0;
+    }
+
+    .video-container {
+        width: 100%;
+    }
+}
+
+/* Desktop View */
+@media (min-width: 769px) {
+    .lesson {
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .lesson-content {
+        margin: 0 20px 0 0;
+    }
+
+    .video-container {
+        flex: 0 0 560px;
+        width: 560px;
+    }
+
+    .lesson:nth-child(even) .lesson-content {
+        margin: 0 0 0 20px;
+    }
 }
