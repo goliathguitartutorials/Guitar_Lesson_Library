@@ -341,6 +341,9 @@ body {
       .filter-container {
           padding: 5px;
           gap: 5px;
+             flex-wrap: nowrap; /* Prevent wrapping */
+        overflow-x: auto; /* Enable horizontal scrolling */
+        white-space: nowrap; /* Ensure buttons stay in a single row */
     }
 
 
