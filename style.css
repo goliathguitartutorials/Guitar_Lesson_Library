@@ -1,10 +1,11 @@
+--- START OF FILE style.css ---
 /* General styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
     color: #333;
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 1000px; /* Keep max-width on body for overall content width */
+    margin: 0 auto;    /* Center the body content */
     padding: 20px;
     box-sizing: border-box;
 }
@@ -18,10 +19,9 @@ body {
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Center header content horizontally */
     border: 1px solid #ddd;
-    max-width: 1000px;
-    width: 100%;
+    width: 100%; /* Make header full width of the browser */
 }
 
 /* Banner styles */
@@ -29,8 +29,9 @@ body {
     width: 100%;
     margin-bottom: 1rem;
     display: flex;
-    justify-content: center;
-    max-width: 1000px;
+    justify-content: center; /* Center banner image horizontally */
+    max-width: 1000px; /* Limit banner container width to 1000px */
+    margin: 0 auto;    /* Center banner container within the header */
     width: 100%;
 }
 
@@ -405,3 +406,4 @@ body {
         margin: 0 0 0 20px;
     }
 }
+--- END OF FILE style.css ---
