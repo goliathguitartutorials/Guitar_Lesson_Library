@@ -304,10 +304,10 @@ body {
     }
 
     .site-header {
-        padding: 1rem 0.5rem;
-        border-radius: 10px;
-        flex-direction: column;
-        align-items: center;
+         padding: 1rem 0.5rem;
+         border-radius: 10px;
+          flex-direction: column;
+          align-items: center;
     }
 
     .banner-container {
@@ -316,54 +316,46 @@ body {
 
     .filter-card {
         padding: 10px;
-        margin-bottom: 0px;
+         margin-bottom: 0px;
     }
 
     .filter-section {
-        flex-direction: column;
-        align-items: flex-start; /* Align to start on mobile */
-        gap: 10px;
-        margin-bottom: 10px; /* added margin */
-
+       display: flex; /* Display filter groups in a row */
+        flex-wrap: wrap; /* Allow wrapping for smaller screens */
+        justify-content: space-around; /* Space out the groups */
+        align-items: flex-start; /* Align items to the start (top) */
+        gap: 10px; /* Add some spacing between filter groups */
     }
 
-    .filter-group {
-        min-width: auto; /* allow the filter groups to take up the full width */
-        margin-bottom: 5px;
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-
+   .filter-group {
+        display: flex; /* Make filter-groups flex containers */
+        flex-direction: column; /* Stack the label and buttons */
+        align-items: flex-start; /* Align items to the start of container */
+        text-align: left;
+        flex: 1;
+       min-width: 150px; /* minimum width*/
+        max-width: 200px; /* maximum width so the filters dont go off the page */
+      margin-bottom: 0;
     }
-
 
 
     .filter-label {
-        font-size: 0.8rem;
-        margin-bottom: 3px;
+      margin-bottom: 3px;
         padding-bottom: 3px;
+        font-size: 0.8rem;
         text-align: left;
-
     }
 
     .filter-container {
-          padding: 5px;
-           gap: 5px;
-          flex-wrap: wrap;
-        overflow-x: hidden;
-        max-width: 100%;
+        display: flex; /* Ensure buttons are in a row*/
+         flex-wrap: wrap; /* wrap if necessary */
+        justify-content: flex-start; /* Align items at the start of the row */
+        gap: 5px; /* spacing*/
+         padding: 5px;
         width: auto;
-    }
-
-
-    .mobile-filter .filter-container{
-           justify-content: flex-start;
-    }
-
-    .mobile-filter .filter-container.primary-filters,
-     .mobile-filter .filter-container.decade-filters{
-        margin-bottom: 10px;
+          max-width: 100%;
+        overflow-x: hidden;
+         margin: 0;
     }
 
 
@@ -371,7 +363,6 @@ body {
         padding: 6px 12px;
         font-size: 0.7rem;
     }
-
 
     .lesson {
         flex-direction: column;
@@ -393,8 +384,8 @@ body {
 
 /* Desktop View */
 @media (min-width: 769px) {
-    .mobile-filter{
-        display: none;
+   .mobile-filter{
+      display: none;
     }
     .lesson {
         flex-wrap: nowrap;
