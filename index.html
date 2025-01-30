@@ -1,3 +1,4 @@
+--- START OF FILE index.html ---
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -49,7 +50,6 @@
     <div id="lessons-container">
         <!-- Lessons will be loaded here by JavaScript -->
     </div>
-<script>
 <script>
         const lessons = [
     {
@@ -542,13 +542,12 @@
                       const lessonElement = entry.target;
                       if (entry.isIntersecting) {
                           lessonElement.classList.add('slide-in');
+                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
                          } else {
                             // Check scroll direction to animate out on scroll up
                             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                             if (scrollTop < lastScrollTop) { // Scrolling Up
-                                // Instantly disappear by resetting styles
-                                lessonElement.style.opacity = '0';
-                                lessonElement.style.transform = 'translateY(50px)';
+                                lessonElement.classList.remove('slide-in'); // Animate out
                             }
                             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
                          }
@@ -622,3 +621,4 @@
     </script>
 </body>
 </html>
+--- END OF FILE index.html ---
