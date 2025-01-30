@@ -414,7 +414,8 @@ body {
     .lesson:nth-child(even) .lesson-content {
         margin: 0 0 0 20px;
     }
-+   .filter-card {
-+        max-width: 1000px; /* Increased max-width for desktop filter */
-+   }
+    .filter-card {
+-       max-width: 1000px; /* Increased max-width for desktop filter */
++       max-width: 1200px; /* Increased max-width for desktop filter to be wider than lessons */
+    }
 }
