@@ -547,7 +547,7 @@
                             // Check scroll direction to animate out on scroll up
                             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
                             if (scrollTop < lastScrollTop) { // Scrolling Up
-                                lessonElement.classList.remove('slide-in'); // Animate out
+                                lessonElement.classList.remove('slide-in'); // Animate out - ALWAYS on scroll up!
                             }
                             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
                          }
