@@ -1,9 +1,9 @@
---- START OF FILE style.css ---
 /* General styles */
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: #f8f8f2; /* Light text color for dark theme */
+    background-color: #121212; /* Dark background color for dark theme */
     max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
@@ -15,15 +15,16 @@ body {
 
 /* Header styles */
 .site-header {
-    background: linear-gradient(to right, #1a1a1a, #2c3e50);
+    background: linear-gradient(to right, #1a1a1a, #2c3e50); /* Keep gradient or adjust for dark theme */
+    background-color: #1e1e1e; /* Darker background for header */
     padding: 1rem;
     margin-bottom: 1rem;
     border-radius: 15px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.1); /* Lighten shadow for dark theme */
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid #ddd;
+    border: 1px solid #444; /* Darker border for dark theme */
     max-width: 1000px;
     width: 100%;
     margin: 0 auto;
@@ -53,8 +54,8 @@ body {
     margin: 0 auto;
     margin-bottom: 20px;
     border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-    background-color: white; /* Set filter-card background to white */
+    box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Lighten shadow */
+    background-color: #1e1e1e; /* Dark background for filter card */
     padding: 15px;
     position: sticky;
     top: 0;
@@ -91,10 +92,10 @@ body {
     margin-bottom: 5px;
     font-weight: bold;
     text-transform: uppercase;
-    color: #555;
+    color: #ddd; /* Lighter label color */
     letter-spacing: 1px;
     font-size: 0.85rem;
-    border-bottom: 2px solid #ddd;
+    border-bottom: 2px solid #666; /* Darker border for label */
     padding-bottom: 5px;
     display: inline-block;
 }
@@ -106,7 +107,7 @@ body {
     gap: 8px;
     padding: 8px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.2);
+    background: rgba(255, 255, 255, 0.05); /* Slightly darker background for filter container */
     max-width: max-content;
     width: auto;
     margin: 0 auto;
@@ -122,7 +123,7 @@ body {
 
 .filter-button {
     padding: 8px 16px;
-    background: linear-gradient(145deg, #3498db, #2980b9);
+    background: linear-gradient(145deg, #3498db, #2980b9); /* Keep blue gradient or adjust */
     color: white;
     border: none;
     border-radius: 25px;
@@ -132,36 +133,36 @@ body {
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: 0.8rem;
-    box-shadow: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Keep shadow or adjust */
 }
 
 .filter-button:hover {
-    background: linear-gradient(145deg, #2980b9, #3498db);
+    background: linear-gradient(145deg, #2980b9, #3498db); /* Keep hover gradient or adjust */
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5); /* Darker hover shadow */
 }
 
 .filter-button.active {
-    background: linear-gradient(145deg, #e74c3c, #c0392b);
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
+    background: linear-gradient(145deg, #e74c3c, #c0392b); /* Keep orange gradient for active or adjust */
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.4); /* Darker inset shadow */
     transform: translateY(1px);
 }
 
 /* Lesson styles */
 .lesson {
-    border: 1px solid #ddd;
+    border: 1px solid #444; /* Darker border for lessons */
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    background-color: #f9f9f9;
+    background-color: #1e1e1e; /* Dark background for lessons */
     overflow: hidden;
     opacity: 0;
     transform: translateY(50px);
     transition: all 0.5s ease;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.05); /* Lighten shadow */
     will-change: transform, box-shadow;
     max-width: 1000px;
     width: 100%;
@@ -171,8 +172,8 @@ body {
 
 .lesson:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-    background-color: #f0f0f0;
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1); /* Lighten hover shadow */
+    background-color: #252525; /* Slightly lighter hover background */
 }
 
 .lesson.slide-in {
@@ -206,7 +207,7 @@ body {
 }
 
 .lesson h2 {
-    color: #3498db;
+    color: #3498db; /* Keep blue accent for headings or adjust */
     margin-top: 0;
     font-size: 1.5em;
     line-height: 1.2;
@@ -217,11 +218,11 @@ body {
 }
 
 .lesson a {
-    color: #fff;
+    color: #f8f8f2; /* Light text for link */
     text-decoration: none;
     display: block;
     padding: 15px 30px;
-    background-color: #e74c3c;
+    background-color: #e74c3c; /* Keep red link background or adjust */
     border-radius: 5px;
     text-align: center;
     font-size: 1.2em;
@@ -233,7 +234,7 @@ body {
 }
 
 .lesson a:hover {
-    background-color: #c0392b;
+    background-color: #c0392b; /* Keep darker red hover background or adjust */
 }
 
 /* Video container styles */
@@ -260,7 +261,7 @@ body {
     transform: translate(-50%, -50%);
     width: 80px;
     height: 80px;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.7); /* Darker play button background */
     border-radius: 50%;
     display: flex;
     align-items: center;
@@ -269,7 +270,7 @@ body {
 }
 
 .video-container .play-button:hover {
-    background: rgba(0, 0, 0, 0.8);
+    background: rgba(0, 0, 0, 0.9); /* Even darker hover play button background */
 }
 
 .video-container .play-button::before {
@@ -291,7 +292,7 @@ body {
 
 .genre {
     font-style: italic;
-    color: #7f8c8d;
+    color: #7f8c8d; /* Keep genre color or adjust */
 }
 
 .lesson:nth-child(even) {
@@ -313,9 +314,9 @@ body {
     .filter-card {
         padding: 20px;
         margin-bottom: 20px;
-        background-color: #ffffff;
+        background-color: #1e1e1e; /* Dark background for mobile filter card */
         border-radius: 10px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Lighten shadow */
     }
 
     .filter-section {
@@ -333,7 +334,7 @@ body {
     }
 
     .filter-label {
-        color: #666;
+        color: #ddd; /* Lighter mobile label color */
         font-size: 0.9rem;
         font-weight: 600;
         margin-bottom: 10px;
@@ -357,7 +358,7 @@ body {
         padding: 8px 16px;
         font-size: 0.8rem;
         border-radius: 25px;
-        background: linear-gradient(145deg, #3498db, #2980b9); /* Default blue gradient */
+        background: linear-gradient(145deg, #3498db, #2980b9); /* Keep blue gradient or adjust */
         color: white;
         border: none;
         min-width: auto;
@@ -365,7 +366,7 @@ body {
     }
 
     .filter-button.active, .mobile-filter-toggle.active-filter { /* Apply active style to both desktop buttons and mobile toggles */
-        background: linear-gradient(145deg, #e74c3c, #c0392b); /* Orange gradient for active */
+        background: linear-gradient(145deg, #e74c3c, #c0392b); /* Keep orange gradient for active or adjust */
         box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.2);
         transform: translateY(1px);
     }
@@ -384,7 +385,7 @@ body {
     /* Mobile-specific heading styles */
     .filter-group .filter-label {
         font-size: 1rem;
-        color: #333;
+        color: #ddd; /* Lighter mobile heading color */
         margin-bottom: 10px;
     }
 
@@ -414,7 +415,7 @@ body {
     .mobile-filter-toggle {
         flex: 0 1 auto;
         padding: 10px 20px;
-        background-color: #007bff; /* Default blue for mobile toggles */
+        background-color: #007bff; /* Keep blue for mobile toggles or adjust */
         color: white;
         border: none;
         border-radius: 20px;
@@ -432,8 +433,8 @@ body {
         position: absolute;
         left: 0;
         right: 0;
-        background: white;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        background: #1e1e1e; /* Dark dropdown background */
+        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05); /* Lighten dropdown shadow */
         border-radius: 10px;
         padding: 10px;
         z-index: 1000;
@@ -451,13 +452,23 @@ body {
         text-align: center; /* Center text in buttons within dropdown - changed from left to center */
         margin-bottom: 5px; /* Spacing between vertical buttons */
         border-radius: 5px; /* Less rounded corners for vertical buttons */
+        color: #f8f8f2; /* Light text color for dropdown buttons */
+        background: linear-gradient(145deg, #3498db, #2980b9); /* Or adjust button gradient for dark theme */
     }
+
+    .filter-dropdown .filter-button:hover {
+        background: linear-gradient(145deg, #2980b9, #3498db); /* Hover style for dropdown buttons */
+    }
+
+    .filter-dropdown .filter-button.active, .mobile-filter-toggle.active-filter { /* Active style for dropdown buttons */
+        background: linear-gradient(145deg, #e74c3c, #c0392b); /* Or adjust active button gradient for dark theme */
+    }
+
 
     .filter-dropdown .filter-button:last-child {
         margin-bottom: 0; /* Remove margin from last button in dropdown */
     }
 
-    /* NEW: Styles for thumbnail image and video iframe within video-container (mobile) */
     .video-container {
         position: relative; /* Make video-container relative for iframe positioning */
         cursor: pointer;
@@ -493,6 +504,7 @@ body {
     .lesson {
         flex-wrap: nowrap;
         align-items: center;
+        background-color: #1e1e1e; /* Dark background for desktop lessons */
     }
 
     .lesson-content {
@@ -509,5 +521,6 @@ body {
     }
     .filter-card {
         max-width: 1200px;
+        background-color: #1e1e1e; /* Dark background for desktop filter card */
     }
 }
