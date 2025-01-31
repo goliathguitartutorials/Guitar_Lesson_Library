@@ -578,31 +578,37 @@
                   entries.forEach(entry => {
                       const lessonElement = entry.target;
                       if (entry.isIntersecting) {
-                          // Slide-in from bottom when entering viewport
-                          lessonElement.classList.remove('slide-out-top'); // Ensure slide-out class is removed
-                          lessonElement.classList.add('slide-in-bottom');
-                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
-                         } else {
-                            // Check scroll direction to animate out on scroll up
-                            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                            if (scrollTop > lastScrollTop) { // Scrolling Down
-                                // Slide-out to top when scrolling down and element is no longer intersecting
-                                lessonElement.classList.remove('slide-in-bottom'); // Ensure slide-in class is removed
-                                lessonElement.classList.add('slide-out-top');
-                            } else { // Scrolling Up (and lesson is no longer intersecting - meaning it's above)
-                                // When scrolling back up, and lesson is no longer intersecting, we want it to stay "slid out" at the top.
-                                // No class change needed here for slide-out when scrolling back up.
-                                // If you want it to *re-slide-in* when scrolling back up to *reveal* it from the bottom, you'd need more complex logic.
-                                // For now, it will just stay slid out at the top when scrolling back up past it.
-                            }
-                            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
-                         }
+                          // Lesson is entering viewport
+                          if (window.scrollY > lastScrollTop) { // Scrolling Down - Bottom Slide-In
+                              lessonElement.classList.remove('slide-out-top'); // Ensure top slide-out is removed
+                              lessonElement.classList.remove('slide-in-top');  // Ensure top slide-in is removed
+                              lessonElement.classList.add('slide-in');        // Add bottom slide-in
+                          } else { // Scrolling Up - Top Slide-In
+                              lessonElement.classList.remove('slide-out-top'); // Ensure top slide-out is removed
+                              lessonElement.classList.remove('slide-in');     // Ensure bottom slide-in is removed
+                              lessonElement.classList.add('slide-in-top');     // Add top slide-in
+                          }
+                      } else {
+                          // Lesson is leaving viewport
+                          if (window.scrollY < lastScrollTop) { // Scrolling Up - Bottom Slide-Out (existing)
+                              lessonElement.classList.remove('slide-in');       // Remove bottom slide-in
+                              lessonElement.classList.remove('slide-in-top');  // Ensure top slide-in is removed
+                              lessonElement.classList.remove('slide-out-top'); // Ensure top slide-out is removed (redundant but safe)
+                          } else { // Scrolling Down - Top Slide-Out (new)
+                              lessonElement.classList.remove('slide-in');       // Remove bottom slide-in
+                              lessonElement.classList.remove('slide-in-top');  // Ensure top slide-in is removed
+                              lessonElement.classList.add('slide-out-top');      // Add top slide-out
+                          }
+                      }
                   });
-            }, {threshold: 0.2});
-             observer.observe(lessonDiv);
+                  lastScrollTop = window.scrollY <= 0 ? 0 : window.scrollY; // Update scroll position
+              }, { threshold: 0.2 });
+
+             lessonsContainer.querySelectorAll('.lesson').forEach(lessonDiv => { // Re-observe all lessons
+                observer.observe(lessonDiv);
+            });
         });
 
-        }
         function filterLessons() {
         let filteredLessons = [...lessons];
 
