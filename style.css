@@ -299,53 +299,6 @@ body {
     flex-direction: row-reverse;
 }
 
-/* --- New CSS for Top Slide Animations --- */
-
-/* Initial state for top slide-out (starts at normal position) */
-.lesson.slide-out-top {
-    opacity: 1; /* Visible initially */
-    transform: translateY(0); /* Start at normal vertical position */
-    transition: all 0.5s ease; /* Use same transition duration/easing */
-    will-change: transform, opacity, box-shadow; /* Keep will-change for performance */
-}
-
-/* Animation for sliding out to the top and text to the right */
-.lesson.slide-out-top {
-    opacity: 0; /* Fade out */
-    transform: translateY(-50px); /* Slide up 50px */
-}
-
-/* Animation for sliding in from the top and text to the left */
-.lesson.slide-in-top {
-    opacity: 0; /* Initially invisible */
-    transform: translateY(-50px); /* Start 50px above */
-    transition: all 0.5s ease; /* Use same transition duration/easing */
-    will-change: transform, opacity, box-shadow; /* Keep will-change for performance */
-}
-
-.lesson.slide-in-top {
-    opacity: 1; /* Fade in */
-    transform: translateY(0); /* Slide down to normal position */
-}
-
-/* Text animation for top animations (similar to existing text animation) */
-.lesson.slide-out-top .lesson-info,
-.lesson.slide-in-top .lesson-info {
-    opacity: 1; /* Make sure lesson-info is visible during top animations */
-    transition: all 0.6s ease; /* Use same text transition */
-}
-
-.lesson.slide-out-top .lesson-info {
-    transform: translateX(50px); /* Text moves to the right for top slide-out */
-    opacity: 0; /* Fade out text with card */
-}
-
-.lesson.slide-in-top .lesson-info {
-    transform: translateX(-50px); /* Text starts from the left for top slide-in */
-    opacity: 1; /* Fade in text with card */
-}
-
-
 /* Media Queries */
 /* General styles remain the same until media query */
 
