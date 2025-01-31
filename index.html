@@ -574,33 +574,22 @@
             });
 
 
-const observer = new IntersectionObserver(entries => {
-    entries.forEach(entry => {
-        const lessonElement = entry.target;
-        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const isScrollingDown = scrollTop > lastScrollTop;
-        const isScrollingUp = scrollTop < lastScrollTop;
-
-        if (entry.isIntersecting) {
-            if (isScrollingDown) {
-                lessonElement.classList.add('slide-in'); // Slide in when entering from bottom (scrolling down)
-                lessonElement.classList.remove('slide-out-top'); // Ensure slide-out class is removed
-            } else if (isScrollingUp) {
-                lessonElement.classList.add('slide-in'); // Slide in when entering from top (scrolling up)
-                lessonElement.classList.remove('slide-out-top'); // Ensure slide-out class is removed
-            }
-        } else {
-            if (isScrollingUp && !isScrollingDown) { // Scrolling up and not intersecting anymore (leaving from top)
-                lessonElement.classList.remove('slide-in'); // Remove slide-in class
-                lessonElement.classList.add('slide-out-top'); // Apply slide-out class for top exit
-            } else if (isScrollingDown && !isScrollingUp) {
-                lessonElement.classList.remove('slide-in'); // If scrolling down and not intersecting, just remove slide-in (card is moving off screen at bottom)
-                lessonElement.classList.remove('slide-out-top'); // Ensure slide-out class is removed
-            }
-        }
-        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // Update last scroll position
-    });
-}, { threshold: 0.2 });
+              const observer = new IntersectionObserver(entries => {
+                  entries.forEach(entry => {
+                      const lessonElement = entry.target;
+                      if (entry.isIntersecting) {
+                          lessonElement.classList.add('slide-in');
+                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
+                         } else {
+                            // Check scroll direction to animate out on scroll up
+                            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                            if (scrollTop < lastScrollTop) { // Scrolling Up
+                                lessonElement.classList.remove('slide-in'); // Animate out - ALWAYS on scroll up!
+                            }
+                            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+                         }
+                  });
+            }, {threshold: 0.2});
              observer.observe(lessonDiv);
         });
 
