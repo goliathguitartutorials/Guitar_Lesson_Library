@@ -150,92 +150,81 @@ body {
 
 /* Lesson styles */
 .lesson {
-    border: 1px solid #444; /* Darker border for lessons */
+    /* Modified base .lesson styles */
+    border: 1px solid #444;
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 5px;
     display: flex;
     flex-wrap: wrap;
     align-items: flex-start;
-    background-color: #1e1e1e; /* Dark background for lessons */
+    background-color: #1e1e1e;
     overflow: hidden;
-    opacity: 0;
-    transform: translateY(50px);
+    opacity: 1; /* Start visible, we'll control hiding with transform */
+    transform: translateY(0); /* Reset initial vertical transform */
     transition: all 0.5s ease;
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.05); /* Lighten shadow */
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.05);
     will-change: transform, box-shadow;
     max-width: 1000px;
     width: 100%;
     margin-left: auto;
     margin-right: auto;
+    transform: translateY(-50px); /* Initial position *above* viewport for slide-in from bottom */
+    opacity: 0; /* Initially hidden */
 }
 
 .lesson:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1); /* Lighten hover shadow */
-    background-color: #252525; /* Slightly lighter hover background */
+    box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+    background-color: #252525;
 }
 
-.lesson.slide-in {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.lesson.slide-in:hover {
-    transform: translateY(-5px);
-}
-
-.lesson-content {
-    flex: 1 1 300px;
-    margin: 0 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
+/* Modified lesson-info for horizontal text movement */
 .lesson-info {
     flex-grow: 1;
     overflow: hidden;
-    opacity: 0;
-    transform: translateX(-50px);
+    opacity: 1; /* Start visible, control with transform */
     transition: all 0.6s ease;
+    transform: translateX(0); /* Reset initial horizontal transform */
+}
+
+
+/*  --- New Classes for Slide-Out-Top and Slide-In-Bottom Animations --- */
+
+/* Slide-out-top animation (moves upwards, text right) */
+.lesson.slide-out-top {
+    transform: translateY(-100px); /* Move further up to slide out */
+    opacity: 0;
+}
+
+.lesson.slide-out-top .lesson-info {
+    transform: translateX(50px); /* Text moves to the right */
+}
+
+
+/* Slide-in-bottom animation (moves downwards, text left - default) */
+.lesson.slide-in-bottom {
+    transform: translateY(0); /* Slide in to normal position */
+    opacity: 1;
+}
+
+.lesson.slide-in-bottom .lesson-info {
+    transform: translateX(0); /* Text in normal left position (default) */
+}
+
+/* We can remove/comment out the old .lesson.slide-in class as we are replacing it */
+/*
+.lesson.slide-in {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 .lesson.slide-in .lesson-info {
     opacity: 1;
     transform: translateX(0);
 }
+*/
 
-.lesson h2 {
-    color: #3498db; /* Keep blue accent for headings or adjust */
-    margin-top: 0;
-    font-size: 1.5em;
-    line-height: 1.2;
-}
-
-.lesson p {
-    margin-bottom: 10px;
-}
-
-.lesson a {
-    color: #f8f8f2; /* Light text for link */
-    text-decoration: none;
-    display: block;
-    padding: 15px 30px;
-    background-color: #e74c3c; /* Keep red link background or adjust */
-    border-radius: 5px;
-    text-align: center;
-    font-size: 1.2em;
-    font-weight: bold;
-    transition: background-color 0.3s ease;
-    width: 80%;
-    max-width: 300px;
-    margin: 10px auto;
-}
-
-.lesson a:hover {
-    background-color: #c0392b; /* Keep darker red hover background or adjust */
-}
 
 /* Video container styles */
 .video-container {
