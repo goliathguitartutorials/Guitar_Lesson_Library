@@ -313,6 +313,7 @@ body {
 
     .filter-card {
         padding: 20px;
+        margin-top: 20px;
         margin-bottom: 20px;
         background-color: #1e1e1e; /* Dark background for mobile filter card */
         border-radius: 10px;
