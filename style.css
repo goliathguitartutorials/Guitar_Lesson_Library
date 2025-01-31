@@ -338,6 +338,7 @@ body {
       position: absolute;
       left: 50%;
       transform: translateX(-50%);
+         width: auto;
       /* Optionally adjust the width if needed, for example:
       width: auto;
       max-width: 90%;
