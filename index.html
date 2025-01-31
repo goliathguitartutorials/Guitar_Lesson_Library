@@ -578,13 +578,22 @@
                   entries.forEach(entry => {
                       const lessonElement = entry.target;
                       if (entry.isIntersecting) {
-                          lessonElement.classList.add('slide-in');
+                          // Slide-in from bottom when entering viewport
+                          lessonElement.classList.remove('slide-out-top'); // Ensure slide-out class is removed
+                          lessonElement.classList.add('slide-in-bottom');
                          //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
                          } else {
                             // Check scroll direction to animate out on scroll up
                             let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                            if (scrollTop < lastScrollTop) { // Scrolling Up
-                                lessonElement.classList.remove('slide-in'); // Animate out - ALWAYS on scroll up!
+                            if (scrollTop > lastScrollTop) { // Scrolling Down
+                                // Slide-out to top when scrolling down and element is no longer intersecting
+                                lessonElement.classList.remove('slide-in-bottom'); // Ensure slide-in class is removed
+                                lessonElement.classList.add('slide-out-top');
+                            } else { // Scrolling Up (and lesson is no longer intersecting - meaning it's above)
+                                // When scrolling back up, and lesson is no longer intersecting, we want it to stay "slid out" at the top.
+                                // No class change needed here for slide-out when scrolling back up.
+                                // If you want it to *re-slide-in* when scrolling back up to *reveal* it from the bottom, you'd need more complex logic.
+                                // For now, it will just stay slid out at the top when scrolling back up past it.
                             }
                             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
                          }
