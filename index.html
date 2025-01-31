@@ -572,75 +572,28 @@
                 thumbnailImage.style.display = 'none'; // Hide the thumbnail
                 videoIframe.style.display = 'block';   // Show the iframe
             });
-            });
-             // After rendering lessons, observe them for animation and infinite scroll
-            document.querySelectorAll('.lesson').forEach(lesson => {
-                observer.observe(lesson);
-            });
+
+
+              const observer = new IntersectionObserver(entries => {
+                  entries.forEach(entry => {
+                      const lessonElement = entry.target;
+                      if (entry.isIntersecting) {
+                          lessonElement.classList.add('slide-in');
+                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
+                         } else {
+                            // Check scroll direction to animate out on scroll up
+                            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                            if (scrollTop < lastScrollTop) { // Scrolling Up
+                                lessonElement.classList.remove('slide-in'); // Animate out - ALWAYS on scroll up!
+                            }
+                            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+                         }
+                  });
+            }, {threshold: 0.2});
+             observer.observe(lessonDiv);
+        });
+
         }
-
-        function ensureMinimumVisibleLessons() {
-            const viewportHeight = window.innerHeight;
-            const initialLessonsToShow = Math.ceil(viewportHeight / 300) + 1; // Estimate number of lessons needed to fill viewport
-
-            // If no lessons are currently visible, show the first batch
-            if (lessonsContainer.children.length === 0) {
-                renderLessons(lessons.slice(0, initialLessonsToShow));
-            }
-        }
-
-
-        const observer = new IntersectionObserver(entries => {
-            entries.forEach(entry => {
-                const lessonElement = entry.target;
-
-                // Add more lessons when last lesson is near viewport
-                if (entry.isIntersecting && entry.target === lessonsContainer.lastElementChild) {
-                    const currentLessonCount = lessonsContainer.children.length;
-                    const nextBatch = lessons.slice(currentLessonCount, currentLessonCount + 5);
-
-                    if (nextBatch.length > 0) {
-                        renderLessons(nextBatch); // Append next batch by re-rendering with only the new lessons
-                    }
-                }
-
-
-                // Existing slide in/out logic remains the same as in previous response
-                if (entry.isIntersecting) {
-                    // Sliding in from bottom
-                    if (entry.boundingClientRect.bottom > window.innerHeight) {
-                        lessonElement.classList.add('slide-in');
-                        lessonElement.classList.remove('slide-out-top');
-                    }
-                    // Sliding out at top
-                    else if (entry.boundingClientRect.top <= 0) {
-                        lessonElement.classList.add('slide-out-top');
-                        lessonElement.classList.remove('slide-in');
-                    }
-                } else {
-                    let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-
-                    // Check scroll direction
-                    if (scrollTop < lastScrollTop) { // Scrolling Up
-                        // If lesson is above viewport, slide back in
-                        if (entry.boundingClientRect.bottom < 0) {
-                            lessonElement.classList.remove('slide-out-top');
-                            lessonElement.classList.add('slide-in');
-                        }
-                    } else { // Scrolling Down
-                        // If lesson is above viewport, slide out
-                        if (entry.boundingClientRect.bottom < 0) {
-                            lessonElement.classList.add('slide-out-top');
-                            lessonElement.classList.remove('slide-in');
-                        }
-                    }
-
-                    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-                }
-            });
-        }, {threshold: 0.1}); // Lower threshold to trigger more frequently
-
-
         function filterLessons() {
         let filteredLessons = [...lessons];
 
@@ -701,16 +654,10 @@
     });
 
     // Initial render
-    function initializePage() {
-        ensureMinimumVisibleLessons();
-    }
-
-    // REPLACE THE INITIAL RENDER LINE with this
-    initializePage();
+    renderLessons(lessons);
     // Mobile filter functionality
 const mobileFilterToggles = document.querySelectorAll('.mobile-filter-toggle');
 const filterDropdowns = document.querySelectorAll('.filter-dropdown');
-
 
 mobileFilterToggles.forEach(toggle => {
     toggle.addEventListener('click', function(e) {
