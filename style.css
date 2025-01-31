@@ -416,37 +416,65 @@ body {
         display: block;
     }
     
+@media (max-width: 768px) {
+    /* Center the main filter buttons */
     .mobile-filter-buttons {
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         gap: 10px;
         margin-bottom: 10px;
+        width: 100%;
     }
     
     .mobile-filter-toggle {
-        flex: 1;
-        padding: 10px;
+        flex: 0 1 auto; /* Changed from flex: 1 to prevent stretching */
+        padding: 10px 20px;
         background-color: #007bff;
         color: white;
         border: none;
         border-radius: 20px;
         cursor: pointer;
+        min-width: 100px; /* Ensure consistent button width */
     }
-    
+
+    /* Position dropdowns horizontally below buttons */
     .filter-dropdown {
         position: absolute;
+        left: 0;
+        right: 0;
         background: white;
         box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         border-radius: 10px;
         padding: 10px;
         z-index: 1000;
         width: 100%;
+        top: 100%; /* Position directly below the buttons */
+        margin-top: 5px;
     }
     
+    /* Make filter containers horizontal */
     .filter-container {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 5px;
+        display: flex;
+        flex-wrap: nowrap;
+        overflow-x: auto;
+        gap: 10px;
+        padding: 5px;
+        justify-content: flex-start;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    /* Style for filter buttons within dropdown */
+    .filter-button {
+        flex: 0 0 auto;
+        white-space: nowrap;
+        padding: 8px 16px;
+        font-size: 0.8rem;
+        border-radius: 25px;
+    }
+
+    /* Hide dropdown when inactive */
+    .filter-dropdown.hidden {
+        display: none;
     }
 }
 
