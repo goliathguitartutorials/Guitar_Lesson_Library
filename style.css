@@ -456,6 +456,33 @@ body {
     .filter-dropdown .filter-button:last-child {
         margin-bottom: 0; /* Remove margin from last button in dropdown */
     }
+
+    /* NEW: Styles for thumbnail image and video iframe within video-container (mobile) */
+    .video-container {
+        position: relative; /* Make video-container relative for iframe positioning */
+        cursor: pointer;
+        width: 100%;
+        aspect-ratio: 16 / 9;
+        align-self: center;
+        overflow: hidden;
+    }
+
+    .thumbnail-image {
+        display: block; /* Ensure image is a block element */
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+    .video-iframe {
+        /* Initially hidden and positioned to cover container, styles also set inline in HTML now */
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: none;
+    }
 }
 
 /* Desktop View */
@@ -484,4 +511,3 @@ body {
         max-width: 1200px;
     }
 }
---- END OF FILE style.css ---
