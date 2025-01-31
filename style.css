@@ -445,16 +445,16 @@ body {
     }
 
      /* Style for filter buttons within dropdown - inherit general mobile filter button styles */
-    .filter-dropdown .filter-button {
-        /* Inheriting styles from general .filter-button in mobile media query */
-        display: block; /* Make buttons stack vertically in dropdown */
-        width: 100%; /* Full width buttons in dropdown */
-        text-align: center; /* Center text in buttons within dropdown - changed from left to center */
-        margin-bottom: 5px; /* Spacing between vertical buttons */
-        border-radius: 5px; /* Less rounded corners for vertical buttons */
-        color: #f8f8f2; /* Light text color for dropdown buttons */
-        background: linear-gradient(145deg, #3498db, #2980b9); /* Or adjust button gradient for dark theme */
-    }
+.filter-dropdown .filter-button {
+    display: block; /* Make buttons stack vertically in dropdown */
+    width: calc(100% - 20px); /* Full width with slight margin */
+    max-width: 300px; /* Optional: limit maximum width */
+    margin: 5px auto; /* Center buttons horizontally */
+    text-align: center; /* Ensure text is centered */
+    border-radius: 5px; 
+    color: #f8f8f2; 
+    background: linear-gradient(145deg, #3498db, #2980b9);
+}
 
     .filter-dropdown .filter-button:hover {
         background: linear-gradient(145deg, #2980b9, #3498db); /* Hover style for dropdown buttons */
