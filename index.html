@@ -556,29 +556,28 @@
           lessonsContainer.appendChild(lessonDiv);
 
            const videoContainer = lessonDiv.querySelector('.video-container');
-           videoContainer.addEventListener('click', function() {
+            videoContainer.addEventListener('click', function() {
+        const videoId = this.getAttribute('data-video-id');
+        const rect = this.getBoundingClientRect(); // Get dimensions BEFORE clearing content
+        const width = rect.width;
+        const height = rect.height;
 
-              const videoId = this.getAttribute('data-video-id');
-               const iframe = document.createElement('iframe');
-               iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-               iframe.title = 'YouTube video player';
-               iframe.frameBorder = '0';
-               iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-               iframe.setAttribute('allowfullscreen', '');
+        this.innerHTML = ''; // Clear content AFTER getting dimensions
 
-                 const rect = this.getBoundingClientRect();
-                 const width = rect.width;
-                 const height = rect.height;
-
-
-                iframe.style.width = `${width}px`;
-                iframe.style.height = `${height}px`;
+        const iframe = document.createElement('iframe');
+        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
+        iframe.title = 'YouTube video player';
+        iframe.frameBorder = '0';
+        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+        iframe.setAttribute('allowfullscreen', '');
 
 
+        iframe.style.width = `${width}px`;
+        iframe.style.height = `${height}px`;
 
-                 this.innerHTML = '';
-                 this.appendChild(iframe);
-          });
+
+        this.appendChild(iframe);
+    });
               const observer = new IntersectionObserver(entries => {
                   entries.forEach(entry => {
                       const lessonElement = entry.target;
