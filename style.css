@@ -456,6 +456,16 @@ body {
         background: linear-gradient(145deg, #3498db, #2980b9); /* Or adjust button gradient for dark theme */
     }
 
+        .filter-dropdown .filter-container {
+        width: 100%; /* Make sure container takes full width of dropdown */
+        display: flex;
+        flex-direction: column; /* Vertical layout for mobile filter-container */
+        flex-wrap: wrap;
+        gap: 8px;
+        padding: 0;
+        justify-content: center; /* Center items horizontally in vertical layout */
+    }
+
     .filter-dropdown .filter-button:hover {
         background: linear-gradient(145deg, #2980b9, #3498db); /* Hover style for dropdown buttons */
     }
