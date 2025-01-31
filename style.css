@@ -441,7 +441,11 @@ body {
         width: 100%;
         top: 100%;
         margin-top: 5px;
-        display: none; /* Initially hidden, toggled by JS */
+        display: flex;
+            flex-direction: column;
+    align-items: center; /* This horizontally centers the child elements */
+    justify-content: center;
+        
     }
 
      /* Style for filter buttons within dropdown - inherit general mobile filter button styles */
