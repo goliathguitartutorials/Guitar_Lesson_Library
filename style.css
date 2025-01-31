@@ -57,7 +57,7 @@ body {
     border-radius: 10px;
     box-shadow: 0 4px 10px rgba(255, 255, 255, 0.05); /* Lighten shadow */
     background-color: #1e1e1e; /* Dark background for filter card */
-    padding: 1px;
+    padding: 20px;
     position: sticky;
     top: 0;
     z-index: 100;
