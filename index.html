@@ -693,14 +693,50 @@ document.addEventListener('click', function(event) {
         });
     }
 });
-    // Add this to your JavaScript file
+// Function to handle filter selection
+function handleFilterSelection(filterButton) {
+    // Toggle active state on the button
+    filterButton.classList.toggle('active');
+    
+    // Find and hide the parent dropdown
+    const dropdown = filterButton.closest('.filter-dropdown');
+    if (dropdown) {
+        dropdown.classList.add('hidden');
+    }
+}
+
+// Add click event listeners to all filter buttons
 document.querySelectorAll('.filter-button').forEach(button => {
-    button.addEventListener('click', () => {
-        // Hide all filter containers
-        document.querySelectorAll('.filter-container').forEach(container => {
-            container.style.display = 'none';
+    button.addEventListener('click', () => handleFilterSelection(button));
+});
+
+// Show dropdown when toggle button is clicked
+document.querySelectorAll('.mobile-filter-toggle').forEach(toggle => {
+    toggle.addEventListener('click', (e) => {
+        // Hide all other dropdowns
+        document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+            dropdown.classList.add('hidden');
         });
+        
+        // Show the clicked dropdown
+        const targetDropdown = document.querySelector(
+            `.filter-dropdown[data-type="${toggle.dataset.filterType}"]`
+        );
+        if (targetDropdown) {
+            targetDropdown.classList.remove('hidden');
+        }
+        
+        e.stopPropagation();
     });
+});
+
+// Hide dropdowns when clicking outside
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.mobile-filter')) {
+        document.querySelectorAll('.filter-dropdown').forEach(dropdown => {
+            dropdown.classList.add('hidden');
+        });
+    }
 });
     </script>
 </body>
