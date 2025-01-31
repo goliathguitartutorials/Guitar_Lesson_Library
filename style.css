@@ -441,8 +441,10 @@ body {
         width: 100%;
         top: 100%;
         margin-top: 5px;
-        display: none;
-        text-align: center; 
+        display: flex;         /* ADD THIS LINE: display: flex; */
+        flex-direction: column; /* ADD THIS LINE: flex-direction: column; */
+        justify-content: center; /* ADD THIS LINE: justify-content: center; */
+        align-items: center;     
     }
 
      /* Style for filter buttons within dropdown - inherit general mobile filter button styles */
