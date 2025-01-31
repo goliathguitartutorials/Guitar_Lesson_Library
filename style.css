@@ -441,7 +441,8 @@ body {
         width: 100%;
         top: 100%;
         margin-top: 5px;
-        display: none; /* Initially hidden, toggled by JS */
+        display: none;
+        text-align: center; 
     }
 
      /* Style for filter buttons within dropdown - inherit general mobile filter button styles */
