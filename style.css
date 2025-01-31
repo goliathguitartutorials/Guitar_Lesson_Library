@@ -462,13 +462,12 @@ body {
     }
 
         .filter-dropdown .filter-container {
-        width: 100%; /* Make sure container takes full width of dropdown */
-        display: flex;
-        flex-direction: column; /* Vertical layout for mobile filter-container */
+        width: auto;
+        display: block;
+        flex-direction: column; 
         flex-wrap: wrap;
         gap: 8px;
         padding: 0;
-        justify-content: center; /* Center items horizontally in vertical layout */
     }
 
     .filter-dropdown .filter-button:hover {
