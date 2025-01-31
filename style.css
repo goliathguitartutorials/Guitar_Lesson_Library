@@ -350,7 +350,7 @@ body {
         gap: 8px;
         width: 100%;
         padding: 0;
-        justify-content: flex-start;
+        justify-content: center; /* Center items horizontally in vertical layout */
     }
 
     .filter-button {
@@ -448,7 +448,7 @@ body {
         /* Inheriting styles from general .filter-button in mobile media query */
         display: block; /* Make buttons stack vertically in dropdown */
         width: 100%; /* Full width buttons in dropdown */
-        text-align: left; /* Align text to the left for better readability */
+        text-align: center; /* Center text in buttons within dropdown - changed from left to center */
         margin-bottom: 5px; /* Spacing between vertical buttons */
         border-radius: 5px; /* Less rounded corners for vertical buttons */
     }
