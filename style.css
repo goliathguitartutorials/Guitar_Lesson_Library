@@ -334,6 +334,16 @@ body {
         margin: 0;
     }
 
+     .filter-group .filter-dropdown {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      /* Optionally adjust the width if needed, for example:
+      width: auto;
+      max-width: 90%;
+      */
+  }
+
     .filter-label {
         color: #ddd; /* Lighter mobile label color */
         font-size: 0.9rem;
