@@ -578,37 +578,22 @@
                   entries.forEach(entry => {
                       const lessonElement = entry.target;
                       if (entry.isIntersecting) {
-                          // Lesson is entering viewport
-                          if (window.scrollY > lastScrollTop) { // Scrolling Down - Bottom Slide-In
-                              lessonElement.classList.remove('slide-out-top'); // Ensure top slide-out is removed
-                              lessonElement.classList.remove('slide-in-top');  // Ensure top slide-in is removed
-                              lessonElement.classList.add('slide-in');        // Add bottom slide-in
-                          } else { // Scrolling Up - Top Slide-In
-                              lessonElement.classList.remove('slide-out-top'); // Ensure top slide-out is removed
-                              lessonElement.classList.remove('slide-in');     // Ensure bottom slide-in is removed
-                              lessonElement.classList.add('slide-in-top');     // Add top slide-in
-                          }
-                      } else {
-                          // Lesson is leaving viewport
-                          if (window.scrollY < lastScrollTop) { // Scrolling Up - Bottom Slide-Out (existing)
-                              lessonElement.classList.remove('slide-in');       // Remove bottom slide-in
-                              lessonElement.classList.remove('slide-in-top');  // Ensure top slide-in is removed
-                              lessonElement.classList.remove('slide-out-top'); // Ensure top slide-out is removed (redundant but safe)
-                          } else { // Scrolling Down - Top Slide-Out (new)
-                              lessonElement.classList.remove('slide-in');       // Remove bottom slide-in
-                              lessonElement.classList.remove('slide-in-top');  // Ensure top slide-in is removed
-                              lessonElement.classList.add('slide-out-top');      // Add top slide-out
-                          }
-                      }
+                          lessonElement.classList.add('slide-in');
+                         //  observer.unobserve(entry.target); // REMOVE THIS LINE - We need to keep observing
+                         } else {
+                            // Check scroll direction to animate out on scroll up
+                            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+                            if (scrollTop < lastScrollTop) { // Scrolling Up
+                                lessonElement.classList.remove('slide-in'); // Animate out - ALWAYS on scroll up!
+                            }
+                            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; // For Mobile or negative scrolling
+                         }
                   });
-                  lastScrollTop = window.scrollY <= 0 ? 0 : window.scrollY; // Update scroll position
-              }, { threshold: 0.2 });
-
-             lessonsContainer.querySelectorAll('.lesson').forEach(lessonDiv => { // Re-observe all lessons
-                observer.observe(lessonDiv);
-            });
+            }, {threshold: 0.2});
+             observer.observe(lessonDiv);
         });
 
+        }
         function filterLessons() {
         let filteredLessons = [...lessons];
 
