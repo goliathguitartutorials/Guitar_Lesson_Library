@@ -655,32 +655,31 @@
 
     // Initial render
     renderLessons(lessons);
-// Mobile filter functionality
+    // Mobile filter functionality
 const mobileFilterToggles = document.querySelectorAll('.mobile-filter-toggle');
 const filterDropdowns = document.querySelectorAll('.filter-dropdown');
-
-// Initially hide all dropdowns
-filterDropdowns.forEach(dropdown => {
-    dropdown.style.display = 'none';
-});
 
 mobileFilterToggles.forEach(toggle => {
     toggle.addEventListener('click', function(e) {
         const dropdownId = this.getAttribute('data-dropdown');
-        
-        // Hide all other dropdowns first
         filterDropdowns.forEach(dropdown => {
             if (dropdown.id !== dropdownId) {
                 dropdown.style.display = 'none';
             }
         });
-
-        // Toggle the target dropdown
         const targetDropdown = document.getElementById(dropdownId);
-        targetDropdown.style.display = targetDropdown.style.display === 'block' ? 'none' : 'block';
-        
-        e.stopPropagation();
+        targetDropdown.style.display = targetDropdown.style.display === 'none' ? 'block' : 'none';
+        e.stopPropagation(); // Prevent document click from immediately closing it
     });
+});
+
+// Close dropdown when clicking outside the filter card
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.filter-card.mobile-filter')) {
+        filterDropdowns.forEach(dropdown => {
+            dropdown.style.display = 'none';
+        });
+    }
 });
 
 // Function to handle filter selection and close dropdown
