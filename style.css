@@ -446,14 +446,14 @@ body {
 
      /* Style for filter buttons within dropdown - inherit general mobile filter button styles */
 .filter-dropdown .filter-button {
-    display: block; /* Make buttons stack vertically in dropdown */
-    width: calc(100% - 20px); /* Full width with slight margin */
-    max-width: 300px; /* Optional: limit maximum width */
-    margin: 5px auto; /* Center buttons horizontally */
-    text-align: center; /* Ensure text is centered */
-    border-radius: 5px; 
-    color: #f8f8f2; 
-    background: linear-gradient(145deg, #3498db, #2980b9);
+    display: block;
+    width: 100%; /* Full width of the dropdown container */
+    text-align: center; /* Center the text */
+    padding: 10px 15px; /* Increase padding for better touch target */
+    white-space: normal; /* Allow text to wrap if too long */
+    word-wrap: break-word; /* Break very long words */
+    margin-bottom: 5px; /* Space between buttons */
+    line-height: 1.3; /* Slightly increased line height for wrapped text */
 }
 
     .filter-dropdown .filter-button:hover {
