@@ -185,12 +185,6 @@ body {
     transform: translateY(-5px);
 }
 
-.lesson.slide-out-top {
-    opacity: 0;
-    transform: translateY(-50px); /* Slide out upwards */
-    box-shadow: 0 0 5px rgba(255, 255, 255, 0.05); /* Match initial box-shadow */
-}
-
 .lesson-content {
     flex: 1 1 300px;
     margin: 0 20px;
@@ -210,11 +204,6 @@ body {
 .lesson.slide-in .lesson-info {
     opacity: 1;
     transform: translateX(0);
-}
-
-.lesson.slide-out-top .lesson-info {
-    opacity: 0;
-    transform: translateX(50px); /* Slide out text to the right */
 }
 
 .lesson h2 {
