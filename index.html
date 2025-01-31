@@ -51,9 +51,9 @@
     <div class="filter-section">
         <div class="filter-group">
             <div class="mobile-filter-buttons">
-                <button class="mobile-filter-toggle" data-dropdown="sorting-dropdown">Sorting</button>
-                <button class="mobile-filter-toggle" data-dropdown="decade-dropdown">Decade</button>
-                <button class="mobile-filter-toggle" data-dropdown="difficulty-dropdown">Difficulty</button>
+                <button class="mobile-filter-toggle" data-dropdown="sorting-dropdown" data-filter-type="sort">Sorting</button>
+                <button class="mobile-filter-toggle" data-dropdown="decade-dropdown" data-filter-type="decade">Decade</button>
+                <button class="mobile-filter-toggle" data-dropdown="difficulty-dropdown" data-filter-type="difficulty">Difficulty</button>
             </div>
 
             <!-- Dropdown containers -->
@@ -688,9 +688,36 @@ document.addEventListener('click', function(event) {
 });
 
 // Function to handle filter selection and close dropdown
-function handleFilterSelection(filterButton) {
-    // Toggle active state on the button
-    filterButton.classList.toggle('active');
+function handleFilterSelection(filterButton, filterType, filterValue, filterDisplayText) {
+    // Toggle active state on the desktop button - for visual consistency if desktop is visible
+    const desktopButtons = document.querySelectorAll(`.${filterType}-button`);
+    desktopButtons.forEach(btn => btn.classList.remove('active')); // Clear all active in category
+    if (filterValue !== 'All') { // Only activate desktop button if not 'All'
+        desktopButtons.forEach(btn => {
+            if (btn.getAttribute('data-filter') === filterValue || btn.getAttribute('data-sort') === filterValue) {
+                btn.classList.add('active');
+            }
+        });
+    }
+
+    // Update mobile toggle button text and style
+    const mobileToggleButton = document.querySelector(`.mobile-filter-toggle[data-dropdown="${filterButton.closest('.filter-dropdown').id}"]`);
+    if (mobileToggleButton) {
+        mobileToggleButton.textContent = filterDisplayText; // Set text to selected option
+        mobileToggleButton.classList.add('active-filter'); // Add active orange style
+    }
+
+    // Update filter variables based on filter type
+    if (filterType === 'sort') {
+        selectedSort = filterValue;
+    } else if (filterType === 'decade') {
+        selectedDecade = filterValue;
+    } else if (filterType === 'difficulty') {
+        selectedDifficulty = filterValue;
+    }
+
+    filterLessons(); // Re-render lessons with new filters
+
     // Find and hide the parent dropdown
     const dropdown = filterButton.closest('.filter-dropdown');
     if (dropdown) {
@@ -698,9 +725,17 @@ function handleFilterSelection(filterButton) {
     }
 }
 
-// Add click event listeners to all filter buttons in dropdowns to close dropdown on click
+// Add click event listeners to all filter buttons in dropdowns, passing filter type and value
 document.querySelectorAll('.filter-dropdown .filter-button').forEach(button => {
-    button.addEventListener('click', () => handleFilterSelection(button));
+    button.addEventListener('click', function() {
+        const filterType = this.classList.contains('sort-button') ? 'sort' :
+                           this.classList.contains('decade-button') ? 'decade' :
+                           this.classList.contains('difficulty-button') ? 'difficulty' : '';
+        const filterValue = this.getAttribute('data-sort') || this.getAttribute('data-filter');
+        const filterDisplayText = this.textContent.trim(); // Get button text for mobile toggle
+
+        handleFilterSelection(this, filterType, filterValue, filterDisplayText);
+    });
 });
     </script>
 </body>
