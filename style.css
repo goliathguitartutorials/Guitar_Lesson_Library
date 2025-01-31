@@ -303,6 +303,12 @@ body {
 /* General styles remain the same until media query */
 
 @media (max-width: 768px) {
+
+        body {
+        max-width: 100%;
+        padding: 10px; /* adjust as needed */
+    }
+    
     .desktop-filter {
         display: none;
     }
