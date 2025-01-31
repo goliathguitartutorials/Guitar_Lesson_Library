@@ -305,8 +305,8 @@ body {
 @media (max-width: 768px) {
 
         body {
-        max-width: 100%;
-        padding: 50px; /* adjust as needed */
+        max-width: 95%;
+        padding: 20px; /* adjust as needed */
     }
     
     .desktop-filter {
