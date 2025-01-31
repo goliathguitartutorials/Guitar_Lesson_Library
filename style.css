@@ -72,7 +72,7 @@ body {
     padding: 0;
     border-radius: 5px;
     box-shadow: none;
-    background-color: transparent;
+    background-color: #1e1e1e;;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
@@ -108,7 +108,7 @@ body {
     gap: 8px;
     padding: 8px;
     border-radius: 5px;
-    background: rgba(255, 255, 255, 0.05); /* Slightly darker background for filter container */
+    background-color: #1e1e1e; 
     max-width: max-content;
     width: auto;
     margin: 0 auto;
