@@ -539,53 +539,41 @@
              if (index % 2 !== 0) {
                 lessonDiv.classList.add('lesson-reverse');
             }
-    lessonDiv.innerHTML = `
-    <div class="lesson-content">
-        <div class="lesson-info">
-            <h2>${lesson.title}</h2>
-            <p><span class="genre">Genre: ${lesson.genre}</span></p>
-            <p>${lesson.description}</p>
-        </div>
-        <a href="${lesson.patreonLink}" target="_blank">Access Full Lesson</a>
-    </div>
-    <div class="video-container" data-video-id="${lesson.videoId}">
-        <img src="https://img.youtube.com/vi/${lesson.videoId}/hqdefault.jpg" alt="Video Thumbnail" class="thumbnail-image"> <div class="play-button"></div>
-        <iframe
-            src=""  <!--  Initially empty src to prevent immediate loading -->
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen
-            class="video-iframe"
-            style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"  <!-- Initially hidden and absolutely positioned -->
-        ></iframe>
-    </div>
-`;
+            lessonDiv.innerHTML = `
+                <div class="lesson-content">
+                    <div class="lesson-info">
+                        <h2>${lesson.title}</h2>
+                        <p><span class="genre">Genre: ${lesson.genre}</span></p>
+                        <p>${lesson.description}</p>
+                    </div>
+                    <a href="${lesson.patreonLink}" target="_blank">Access Full Lesson</a>
+                </div>
+                <div class="video-container" data-video-id="${lesson.videoId}">
+                    <img src="https://img.youtube.com/vi/${lesson.videoId}/hqdefault.jpg" alt="Video Thumbnail" class="thumbnail-image"> <div class="play-button"></div>
+                    <iframe
+                        src=""
+                        title="YouTube video player"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                        allowfullscreen
+                        class="video-iframe"
+                        style="display: none; position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;"
+                    ></iframe>
+                 </div>
+            `;
           lessonsContainer.appendChild(lessonDiv);
 
            const videoContainer = lessonDiv.querySelector('.video-container');
-            videoContainer.addEventListener('click', function() {
-        const videoId = this.getAttribute('data-video-id');
-        const rect = this.getBoundingClientRect(); // Get dimensions BEFORE clearing content
-        const width = rect.width;
-        const height = rect.height;
+           const thumbnailImage = videoContainer.querySelector('.thumbnail-image'); // Select the thumbnail image
+           const videoIframe = videoContainer.querySelector('.video-iframe');       // Select the iframe
 
-        this.innerHTML = ''; // Clear content AFTER getting dimensions
-
-        const iframe = document.createElement('iframe');
-        iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1`;
-        iframe.title = 'YouTube video player';
-        iframe.frameBorder = '0';
-        iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
-        iframe.setAttribute('allowfullscreen', '');
+           videoContainer.addEventListener('click', function() {
+                videoIframe.src = `https://www.youtube.com/embed/${lesson.videoId}?autoplay=1`; // Set iframe src on click
+                thumbnailImage.style.display = 'none'; // Hide the thumbnail
+                videoIframe.style.display = 'block';   // Show the iframe
+            });
 
 
-        iframe.style.width = `${width}px`;
-        iframe.style.height = `${height}px`;
-
-
-        this.appendChild(iframe);
-    });
               const observer = new IntersectionObserver(entries => {
                   entries.forEach(entry => {
                       const lessonElement = entry.target;
