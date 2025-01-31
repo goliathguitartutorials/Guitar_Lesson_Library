@@ -441,20 +441,19 @@ body {
 
 
     /* Position dropdowns below buttons */
-    .filter-dropdown {
-        position: absolute;
-        left: 0;
-        right: 0;
-        background: #1e1e1e; /* Dark dropdown background */
-        box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05); /* Lighten dropdown shadow */
-        border-radius: 10px;
-        padding: 10px;
-        z-index: 1000;
-        width: 100%;
-        top: 100%;
-        margin-top: 5px;
-        display: none; /* Initially hidden, toggled by JS */
-    }
+.filter-dropdown {
+    position: absolute;
+    background: #1e1e1e;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 10px;
+    z-index: 1000;
+    top: 100%;
+    margin-top: 5px;
+    display: none;
+    width: auto;           /* Let the content decide the width */
+    white-space: nowrap;   /* Prevent line breaks if you want a single line */
+}
 
      /* Style for filter buttons within dropdown - inherit general mobile filter button styles */
     .filter-dropdown .filter-button {
