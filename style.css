@@ -51,7 +51,7 @@ body {
 .filter-card {
     max-width: 1000px;
     width: 100%;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     margin-top: 20px;
     margin-bottom: 20px;
     border-radius: 10px;
