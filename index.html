@@ -46,6 +46,49 @@
             </div>
         </div>
     </div>
+    <!-- Add this new mobile filter section -->
+<div class="filter-card mobile-filter">
+    <div class="filter-section">
+        <div class="filter-group">
+            <div class="mobile-filter-buttons">
+                <button class="mobile-filter-toggle" data-type="sorting">Sorting</button>
+                <button class="mobile-filter-toggle" data-type="decade">Decade</button>
+                <button class="mobile-filter-toggle" data-type="difficulty">Difficulty</button>
+            </div>
+            
+            <!-- Dropdown containers -->
+            <div class="filter-dropdown" id="sorting-dropdown" style="display: none;">
+                <div class="filter-container primary-filters">
+                    <button class="filter-button sort-button" data-sort="recent">Most Recent</button>
+                    <button class="filter-button sort-button" data-sort="popular">Most Popular</button>
+                    <button class="filter-button sort-button" data-sort="a-z">A to Z</button>
+                    <button class="filter-button sort-button" data-sort="z-a">Z to A</button>
+                </div>
+            </div>
+            
+            <div class="filter-dropdown" id="decade-dropdown" style="display: none;">
+                <div class="filter-container decade-filters">
+                    <button class="filter-button decade-button" data-filter="60s">60s</button>
+                    <button class="filter-button decade-button" data-filter="70s">70s</button>
+                    <button class="filter-button decade-button" data-filter="80s">80s</button>
+                    <button class="filter-button decade-button" data-filter="90s">90s</button>
+                    <button class="filter-button decade-button" data-filter="00s">2000s</button>
+                    <button class="filter-button decade-button" data-filter="After 2010">After 2010</button>
+                    <button class="filter-button decade-button" data-filter="All">All</button>
+                </div>
+            </div>
+            
+            <div class="filter-dropdown" id="difficulty-dropdown" style="display: none;">
+                <div class="filter-container difficulty-filters">
+                    <button class="filter-button difficulty-button" data-filter="1">⭐</button>
+                    <button class="filter-button difficulty-button" data-filter="2">⭐⭐</button>
+                    <button class="filter-button difficulty-button" data-filter="3">⭐⭐⭐</button>
+                    <button class="filter-button difficulty-button" data-filter="All">All</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <div id="lessons-container">
         <!-- Lessons will be loaded here by JavaScript -->
     </div>
@@ -617,6 +660,39 @@
 
     // Initial render
     renderLessons(lessons);
+    // Mobile filter functionality
+const mobileFilterToggles = document.querySelectorAll('.mobile-filter-toggle');
+const filterDropdowns = document.querySelectorAll('.filter-dropdown');
+
+mobileFilterToggles.forEach(toggle => {
+    toggle.addEventListener('click', function() {
+        const type = this.getAttribute('data-type');
+        const targetDropdown = document.getElementById(`${type}-dropdown`);
+        
+        // Close all other dropdowns
+        filterDropdowns.forEach(dropdown => {
+            if (dropdown !== targetDropdown) {
+                dropdown.style.display = 'none';
+            }
+        });
+        
+        // Toggle current dropdown
+        if (targetDropdown.style.display === 'none') {
+            targetDropdown.style.display = 'block';
+        } else {
+            targetDropdown.style.display = 'none';
+        }
+    });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function(event) {
+    if (!event.target.closest('.filter-group')) {
+        filterDropdowns.forEach(dropdown => {
+            dropdown.style.display = 'none';
+        });
+    }
+});
     </script>
 </body>
 </html>
